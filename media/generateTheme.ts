@@ -35,7 +35,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 		'sideBar.background': chromatism.brightness(-5, bg).hex,
 		'activityBar.background': chromatism.brightness(-10, bg).hex,
 	};
-	const tokenColors: TokenColors = [
+	let tokenColors: TokenColors = [
 		// General
 		// {
 		// 	scope: 'invalid',
@@ -219,6 +219,13 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 	// 	],
 	// 	settings: { foreground: chromatism.shade(-20, c.punctuation).hex },
 	// },
+
+	tokenColors = tokenColors.map(token => {
+		if (token.scope.length === 1) {
+			token.scope = token.scope[0];
+		}
+		return token;
+	});
 
 	return {
 		workbenchColors,
