@@ -1,0 +1,15 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+*.todo
+*.vs
+
+media/main.js
+media/webview.js
+media/webview.js.map
+media/webview.css
+media/contextMenu.css
+src/**/*.js
+**/*.js.map

@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2019",
+		"outDir": "out",
+		"suppressImplicitAnyIndexErrors": false,
+		"lib": [
+			"ES2019"
+		],
+		"sourceMap": true,
+		"rootDir": "src",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"types": [
+			"node",
+			"mocha",
+			"chai"
+		]
+	},
+	"exclude": [
+		"node_modules",
+		".vscode-test",
+		"media",
+		"scripts"
+	]
+}

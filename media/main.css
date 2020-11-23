@@ -1,0 +1,50 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+button {
+	background-color: var(--vscode-button-background);
+	border: none;
+	color: var(--vscode-button-foreground);
+	cursor: pointer;
+	font-family: var(--vscode-font-family);
+	margin: 0 auto;
+	padding: 0.2rem 0.4rem;
+}
+
+button:hover {
+	background-color: var(--vscode-button-hoverBackground);
+	color: var(--vscode-button-foreground);
+}
+
+#generate {
+	position: fixed;
+	right: 0.5rem;
+	top: 0.5rem;
+}
+
+#generate:focus {
+	outline: none !important;
+}
