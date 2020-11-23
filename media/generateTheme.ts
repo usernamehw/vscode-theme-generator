@@ -47,6 +47,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'meta.embedded',
 				'source.groovy.embedded',
 				'meta.template.expression',
+				'variable',
 			],
 			settings: {
 				foreground: fg,
@@ -133,6 +134,70 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 			],
 			settings: {
 				foreground: chromatism.shade(-35, fg).hex,
+			},
+		},
+		// CSS
+		{
+			scope: [
+				'entity.name.tag.css',
+			],
+			settings: {
+				foreground: c1,
+			},
+		},
+		{
+			scope: [
+				'entity.other.attribute-name.class',
+				'entity.other.attribute-name punctuation.definition.entity',
+			],
+			settings: {
+				foreground: c2,
+			},
+		},
+		{
+			scope: [
+				'entity.other.attribute-name.pseudo-element',
+				'entity.other.attribute-name.pseudo-class',
+				'constant.other.color',
+			],
+			settings: {
+				foreground: c3,
+			},
+		},
+		{
+			scope: [
+				'entity.other.attribute-name.id',
+				'entity.other.attribute-name.id punctuation.definition.entity',
+			],
+			settings: {
+				foreground: c5,
+			},
+		},
+		{
+			scope: [
+				'meta.property-name',
+				'support.type.property-name',
+			],
+			settings: {
+				foreground: c1,
+			},
+		},
+		{
+			scope: [
+				'meta.property-value',
+				'meta.property-value constant.other',
+				'support.constant.property-value',
+			],
+			settings: {
+				foreground: c4,
+			},
+		},
+		{
+			scope: [
+				'variable.parameter.url',
+			],
+			settings: {
+				foreground: c5,
 			},
 		},
 		// JSON
