@@ -23,7 +23,13 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 		'editorOverviewRuler.bracketMatchForeground': focusColor,
 		'editorBracketMatch.background': `${focusColor}20`,
 		'editorIndentGuide.activeBackground': focusColor,
+		'activityBar.activeBorder': focusColor,
+		'activityBar.dropBorder': focusColor,
+		'editorGroup.dropBackground': `${focusColor}30`,
+		'tab.activeBorder': focusColor,
 
+		'badge.foreground': chromatism.contrastRatio(focusColor).hex,
+		'activityBarBadge.foreground': chromatism.contrastRatio(focusColor).hex,
 
 		'statusBar.background': chromatism.brightness(-10, bg).hex,
 		'sideBar.background': chromatism.brightness(-5, bg).hex,

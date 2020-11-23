@@ -403,6 +403,7 @@ export type WorkbenchColors = Partial<{
 	'tab.activeForeground': string;
 	'tab.activeModifiedBorder': string;
 	'tab.border': string;
+	'tab.activeBorder': string;
 	'tab.inactiveBackground': string;
 	'tab.inactiveForeground': string;
 	'tab.inactiveModifiedBorder': string;
