@@ -146,6 +146,14 @@ export class GenerateThemePanel {
 				<td><label><input type="color" id="color5Init"> Color5</label></td>
 				<td>variable.parameter</td>
 			</tr>
+			<tr>
+				<td><label><input type="color" id="color6Init"> Color6</label></td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td><label><input type="color" id="color7Init"> Color7</label></td>
+				<td>-</td>
+			</tr>
 		</tbody>
 	</table>
 

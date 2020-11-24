@@ -2,8 +2,8 @@ import * as chromatism from 'chromatism';
 import sample from 'lodash/sample';
 import { TokenColors, WorkbenchColors } from '../src/types';
 
-export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
-	const colors = [c1, c2, c3, c4, c5];
+export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
+	const colors = [c1, c2, c3, c4, c5, c6, c7];
 
 	const focusColor = sample(colors);
 	const button = sample(colors);
