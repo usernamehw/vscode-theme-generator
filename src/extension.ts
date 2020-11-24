@@ -24,6 +24,11 @@ export function activate(context: vscode.ExtensionContext) {
 			GenerateThemePanel.createOrShow(context.extensionUri);
 		}),
 	);
+
+
+	if (context.extensionMode === vscode.ExtensionMode.Development) {
+		vscode.commands.executeCommand('generateTheme');
+	}
 }
 
 export function saveWebviewState(state: WebviewSavedState) {

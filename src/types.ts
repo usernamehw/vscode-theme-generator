@@ -23,6 +23,7 @@ export interface WebviewSavedState {
 	c3: string;
 	c4: string;
 	c5: string;
+	shouldShuffle: boolean;
 }
 
 export interface VscodeWebviewApi {

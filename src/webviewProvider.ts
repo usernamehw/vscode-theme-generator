@@ -126,19 +126,39 @@ export class GenerateThemePanel {
 	<input id="themeTypeDark" type="radio" name="themeType" checked>
 	<label for="themeTypeDark">Dark</label> -->
 
-	<button id="generate">▶ Generate</button>
+	<div class="generate-container">
+		<label><input type="checkbox" id="shuffleColors">Shuffle</label>
+		<button id="generate">▶ Generate</button>
+	</div>
 
-	<br>
+	<label><input type="color" id="backgroundInit"> Background</label>
+	<label><input type="color" id="foregroundInit"> Foreground</label>
 
-	<label><input type="color" id="foregroundInit"> Foreground</label><br>
-	<label><input type="color" id="backgroundInit"> Background</label><br>
-	<label><input type="color" id="color1Init"> Color1</label><br>
-	<label><input type="color" id="color2Init"> Color2</label><br>
-	<label><input type="color" id="color3Init"> Color3</label><br>
-	<label><input type="color" id="color4Init"> Color4</label><br>
-	<label><input type="color" id="color5Init"> Color5</label><br>
+	<table class="colors-table">
+		<tbody>
+			<tr>
+				<td><label><input type="color" id="color1Init"> Color1</label><br></td>
+				<td>Strings</td>
+			</tr>
+			<tr>
+				<td><label><input type="color" id="color2Init"> Color2</label></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><label><input type="color" id="color3Init"> Color3</label></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><label><input type="color" id="color4Init"> Color4</label></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><label><input type="color" id="color5Init"> Color5</label></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 
-	<br>
 	<button id="reset">Reset Color Inputs</button><br>
 
 	<script defer nonce="${nonce}" src="${scriptUri}"></script>

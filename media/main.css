@@ -19,6 +19,10 @@ ul {
 	padding: 0;
 }
 
+body {
+	padding: 0.5rem;
+}
+
 img {
 	height: auto;
 	max-width: 100%;
@@ -39,12 +43,25 @@ button:hover {
 	color: var(--vscode-button-foreground);
 }
 
-#generate {
+button:focus {
+	outline: 1px solid var(--vscode-focusBorder) !important;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid var(--vscode-editorOverviewRuler-border);
+	padding: 0.2rem 0.5rem;
+}
+
+.colors-table {
+	margin: 1rem 0;
+}
+
+.generate-container {
 	position: fixed;
 	right: 0.5rem;
 	top: 0.5rem;
-}
-
-#generate:focus {
-	outline: none !important;
 }

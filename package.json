@@ -40,7 +40,8 @@
 		"commands": [
 			{
 				"command": "generateTheme",
-				"title": "Generate a theme"
+				"title": "Generate a theme",
+				"category": "Theme Generator"
 			}
 		],
 		"themes": [

@@ -3,10 +3,8 @@ import sample from 'lodash/sample';
 import shuffle from 'lodash/shuffle';
 import { TokenColors, WorkbenchColors } from '../src/types';
 
-export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }) {
-	const colors = [color1, color2, color3, color4, color5];
-	const [c1, c2, c3, c4, c5] = shuffle(colors);
-
+export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
+	const colors = [c1, c2, c3, c4, c5];
 	const focusColor = sample(colors);
 	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
