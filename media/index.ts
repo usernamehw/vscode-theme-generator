@@ -15,6 +15,7 @@ const $color3El = document.getElementById('color3Init') as HTMLInputElement;
 const $color4El = document.getElementById('color4Init') as HTMLInputElement;
 const $color5El = document.getElementById('color5Init') as HTMLInputElement;
 const $resetEl = document.getElementById('reset') as HTMLButtonElement;
+const $resetCustomizationsEl = document.getElementById('resetCustomizations') as HTMLButtonElement;
 const $shuffleColorsEl = document.getElementById('shuffleColors') as HTMLInputElement;
 
 const saveState = debounce(() => {
@@ -112,6 +113,11 @@ $resetEl.addEventListener('click', () => {
 	state = { ...defaultState };
 	saveState();
 	updateAllElements();
+});
+$resetCustomizationsEl.addEventListener('click', () => {
+	vscodeApi.postMessage({
+		type: 'resetCustomizations',
+	});
 });
 
 function updateAllElements() {

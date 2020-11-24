@@ -9,12 +9,15 @@ interface GenerateTheme {
 		tokenColors: TokenColors;
 	};
 }
+interface ResetCustomizations {
+	type: 'resetCustomizations';
+}
 interface SaveState {
 	type: 'saveState';
 	value: WebviewSavedState;
 }
 
-export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveState;
+export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveState | ResetCustomizations;
 export interface WebviewSavedState {
 	bg: string;
 	fg: string;

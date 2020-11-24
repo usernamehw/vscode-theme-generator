@@ -68,6 +68,9 @@ export class GenerateThemePanel {
 					case 'generateTheme': {
 						updateGlobalCustomizationSettings(message.value.workbenchColors, message.value.tokenColors); break;
 					}
+					case 'resetCustomizations': {
+						updateGlobalCustomizationSettings({}, []);break;
+					}
 				}
 			},
 			null,
@@ -146,7 +149,10 @@ export class GenerateThemePanel {
 		</tbody>
 	</table>
 
-	<button id="reset">Reset Color Inputs</button><br>
+	<p>
+		<button id="reset" title="Reset main color items to default values">Reset Color Inputs</button>
+		<button id="resetCustomizations" title="Reset items in User Global Settings (settings.json)">Reset Customizations</button>
+	</p>
 
 	<script defer nonce="${nonce}" src="${scriptUri}"></script>
 </body>
