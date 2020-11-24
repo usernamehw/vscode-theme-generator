@@ -47,7 +47,19 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'meta.embedded',
 				'source.groovy.embedded',
 				'meta.template.expression',
+			],
+			settings: {
+				foreground: fg,
+			},
+		},
+		{
+			scope: [
 				'variable',
+				'support.variable.property.dom',
+				'support.variable.dom',
+				'support.variable.property',
+				'punctuation.separator.parameter',
+				'string.interpolated.pug variable',
 			],
 			settings: {
 				foreground: fg,
@@ -84,6 +96,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 		{
 			scope: [
 				'keyword',
+				'constant.language.import-export-all', // JS/TS import asterisk
 			],
 			settings: {
 				foreground: c2,
@@ -93,7 +106,10 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 			scope: [
 				'keyword.control',
 				'storage',
-				'storage.type',
+				// 'storage.type',
+				'support.type',
+				'keyword.operator.expression',
+				'keyword.operator.new',
 			],
 			settings: {
 				foreground: c3,
@@ -121,6 +137,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 			scope: [
 				'variable.parameter', // normal languages
 				'parameter.variable', // Elixir
+				'meta.function.parameter variable',
 				'source.rust meta.type_params.rust', // Rust
 			],
 			settings: {
@@ -140,6 +157,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 		{
 			scope: [
 				'entity.name.tag.css',
+				'entity.name.tag.wildcard', // * asterisk in CSS
 			],
 			settings: {
 				foreground: c1,
@@ -170,7 +188,15 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'entity.other.attribute-name.id punctuation.definition.entity',
 			],
 			settings: {
-				foreground: c5,
+				foreground: c4,
+			},
+		},
+		{
+			scope: [
+				'source.css constant.numeric', // TODO: should scss/less be here?
+			],
+			settings: {
+				foreground: c1,
 			},
 		},
 		{
@@ -179,7 +205,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'support.type.property-name',
 			],
 			settings: {
-				foreground: c1,
+				foreground: c5,
 			},
 		},
 		{
