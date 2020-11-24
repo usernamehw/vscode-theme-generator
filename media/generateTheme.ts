@@ -1,6 +1,7 @@
 import * as chromatism from 'chromatism';
 import sample from 'lodash/sample';
 import { TokenColors, WorkbenchColors } from '../src/types';
+import { brightness, shade } from './colorUtils';
 
 export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 	const colors = [c1, c2, c3, c4, c5, c6, c7];
@@ -19,22 +20,26 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editor.foreground': fg,
 		// bg derived
 		'editor.background': bg,
-		'editor.lineHighlightBackground': chromatism.brightness(-5, bg).hex,
-		'editorWhitespace.foreground': chromatism.shade(20, bg).hex,
-		'editorLineNumber.foreground': chromatism.brightness(20, bg).hex,
-		'editorLineNumber.activeForeground': chromatism.brightness(50, bg).hex,
-		'editorOverviewRuler.border': chromatism.shade(10, bg).hex,
-		'scrollbarSlider.background': `${chromatism.shade(30, bg).hex}40`,
-		'scrollbarSlider.hoverBackground': `${chromatism.shade(40, bg).hex}40`,
-		'scrollbarSlider.activeBackground': `${chromatism.shade(20, bg).hex}40`,
+		'editor.lineHighlightBackground': brightness(-5, bg),
+		'editorWhitespace.foreground': shade(20, bg),
+		'editorLineNumber.foreground': brightness(20, bg),
+		'editorLineNumber.activeForeground': brightness(50, bg),
+		'editorOverviewRuler.border': shade(10, bg),
+		'scrollbarSlider.background': `${shade(30, bg)}40`,
+		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
+		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,
 
-		'editorGroupHeader.tabsBackground': chromatism.brightness(5, bg).hex,
-		'tab.inactiveBackground': chromatism.brightness(5, bg).hex,
+		'statusBar.background': shade(-10, bg),
+		'sideBar.background': shade(-5, bg),
+		'activityBar.background': shade(-10, bg), // shade(-10, bg)
+
+		'editorGroupHeader.tabsBackground': brightness(5, bg),
+		'tab.inactiveBackground': brightness(5, bg),
 		'tab.activeBackground': bg,
-		'tab.border': chromatism.shade(-5, bg).hex,
-		'tab.hoverBackground': chromatism.shade(5, bg).hex,
-		'editorGroup.border': chromatism.shade(-5, bg).hex,
-		'sideBarSectionHeader.background': chromatism.shade(-10, bg).hex,
+		'tab.border': shade(-5, bg),
+		'tab.hoverBackground': shade(5, bg),
+		'editorGroup.border': shade(-5, bg),
+		'sideBarSectionHeader.background': shade(-10, bg),
 
 		'titleBar.inactiveBackground': bg,
 		'titleBar.activeBackground': bg,
@@ -43,17 +48,17 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'menu.foreground': fg,
 		'menu.selectionBackground': focusColor,
 		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
-		'menu.separatorBackground': chromatism.shade(-10, bg).hex,
-		'textSeparator.foreground': chromatism.shade(-10, bg).hex,
-		'pickerGroup.border': chromatism.shade(-10, bg).hex,
+		'menu.separatorBackground': shade(-10, bg),
+		'textSeparator.foreground': shade(-10, bg),
+		'pickerGroup.border': shade(-10, bg),
 
-		'input.background': chromatism.shade(-5, bg).hex,
+		'input.background': shade(-5, bg),
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
 		focusBorder: focusColor,
 
-		'editorBracketMatch.border': chromatism.shade(-20, focusColor).hex,
+		'editorBracketMatch.border': shade(-20, focusColor),
 		'editorOverviewRuler.bracketMatchForeground': focusColor,
 		'editorBracketMatch.background': `${focusColor}20`,
 		'editorIndentGuide.activeBackground': focusColor,
@@ -66,11 +71,11 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'list.activeSelectionBackground': `${focusColor}20`,
 		'list.inactiveSelectionBackground': `${focusColor}25`,
 		'list.focusBackground': `${focusColor}30`,
-		'list.hoverBackground': chromatism.brightness(5, bg).hex,
+		'list.hoverBackground': brightness(5, bg),
 		'editorWidget.background': bg,
 		'notifications.background': bg,
 
-		'dropdown.background': chromatism.brightness(5, bg).hex,
+		'dropdown.background': brightness(5, bg),
 		// ──────────────────────────────────────────────────────────────────────
 		'list.highlightForeground': letterHighlight,
 		'editorSuggestWidget.highlightForeground': letterHighlight,
@@ -81,13 +86,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'activityBarBadge.foreground': chromatism.contrastRatio(badge).hex,
 
 		'button.background': button,
-		'button.hoverBackground': chromatism.shade(-20, button).hex,
+		'button.hoverBackground': shade(-20, button),
 		'button.foreground': chromatism.contrastRatio(button).hex,
-
-
-		'statusBar.background': chromatism.shade(-10, bg).hex,
-		'sideBar.background': chromatism.shade(-5, bg).hex,
-		'activityBar.background': chromatism.shade(-10, bg).hex,
 	};
 	let tokenColors: TokenColors = [
 		// General
