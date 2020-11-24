@@ -1,5 +1,5 @@
 {
-	"name": "vscode-theme-generator",
+	"name": "theme-generator",
 	"displayName": "Theme Generator",
 	"description": "Try to generate a color theme.",
 	"version": "0.0.1",
