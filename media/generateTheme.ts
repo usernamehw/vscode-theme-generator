@@ -12,7 +12,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 
 	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
-	const comment = chromatism.shade(35, bg).hex;
+	const comment = chromatism.shade(40, bg).hex;
 
 	const workbenchColors: WorkbenchColors = {
 		foreground: fg,
@@ -23,12 +23,18 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editorWhitespace.foreground': chromatism.shade(20, bg).hex,
 		'editorLineNumber.foreground': chromatism.brightness(20, bg).hex,
 		'editorLineNumber.activeForeground': chromatism.brightness(50, bg).hex,
+		'editorOverviewRuler.border': chromatism.shade(10, bg).hex,
+		'scrollbarSlider.background': `${chromatism.shade(30, bg).hex}40`,
+		'scrollbarSlider.hoverBackground': `${chromatism.shade(40, bg).hex}40`,
+		'scrollbarSlider.activeBackground': `${chromatism.shade(20, bg).hex}40`,
 
 		'editorGroupHeader.tabsBackground': chromatism.brightness(5, bg).hex,
 		'tab.inactiveBackground': chromatism.brightness(5, bg).hex,
 		'tab.activeBackground': bg,
 		'tab.border': chromatism.shade(-5, bg).hex,
+		'tab.hoverBackground': chromatism.shade(5, bg).hex,
 		'editorGroup.border': chromatism.shade(-5, bg).hex,
+		'sideBarSectionHeader.background': chromatism.shade(-10, bg).hex,
 
 		'titleBar.inactiveBackground': bg,
 		'titleBar.activeBackground': bg,
@@ -37,8 +43,11 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'menu.foreground': fg,
 		'menu.selectionBackground': focusColor,
 		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
+		'menu.separatorBackground': chromatism.shade(-10, bg).hex,
+		'textSeparator.foreground': chromatism.shade(-10, bg).hex,
+		'pickerGroup.border': chromatism.shade(-10, bg).hex,
 
-		'input.background': chromatism.shade(-10, bg).hex,
+		'input.background': chromatism.shade(-5, bg).hex,
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
@@ -58,6 +67,10 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'list.inactiveSelectionBackground': `${focusColor}25`,
 		'list.focusBackground': `${focusColor}30`,
 		'list.hoverBackground': chromatism.brightness(5, bg).hex,
+		'editorWidget.background': bg,
+		'notifications.background': bg,
+
+		'dropdown.background': chromatism.brightness(5, bg).hex,
 		// ──────────────────────────────────────────────────────────────────────
 		'list.highlightForeground': letterHighlight,
 		'editorSuggestWidget.highlightForeground': letterHighlight,

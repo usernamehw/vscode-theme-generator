@@ -52,6 +52,7 @@ export type WebviewMessageToWebview = RestoreState;
 
 export type WorkbenchColors = Partial<{
 	'activityBarBadge.background': string;
+	'tab.hoverBackground': string;
 	'editor.background': string;
 	'editor.foreground': string;
 	'editor.inactiveSelectionBackground': string;
