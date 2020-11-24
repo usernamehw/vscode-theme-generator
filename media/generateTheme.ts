@@ -1,11 +1,11 @@
 import * as chromatism from 'chromatism';
 import sample from 'lodash/sample';
-import shuffle from 'lodash/shuffle';
 import { TokenColors, WorkbenchColors } from '../src/types';
 
 export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 	const colors = [c1, c2, c3, c4, c5];
 	const focusColor = sample(colors);
+	const button = sample(colors);
 	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
 
@@ -14,6 +14,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 		'editor.foreground': fg,
 		'editor.lineHighlightBackground': chromatism.brightness(-5, bg).hex,
 		'editorWhitespace.foreground': chromatism.shade(20, bg).hex,
+		'editorLineNumber.foreground': chromatism.brightness(20, bg).hex,
+		'editorLineNumber.activeForeground': chromatism.brightness(50, bg).hex,
 
 		'editorCursor.foreground': focusColor,
 		focusBorder: focusColor,
@@ -27,6 +29,10 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 		'activityBar.dropBorder': focusColor,
 		'editorGroup.dropBackground': `${focusColor}30`,
 		'tab.activeBorder': focusColor,
+
+		'button.background': button,
+		'button.hoverBackground': chromatism.shade(-20, button).hex,
+		'button.foreground': chromatism.contrastRatio(button).hex,
 
 		'badge.foreground': chromatism.contrastRatio(focusColor).hex,
 		'activityBarBadge.foreground': chromatism.contrastRatio(focusColor).hex,
