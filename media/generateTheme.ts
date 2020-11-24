@@ -4,8 +4,12 @@ import { TokenColors, WorkbenchColors } from '../src/types';
 
 export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 	const colors = [c1, c2, c3, c4, c5];
+
 	const focusColor = sample(colors);
 	const button = sample(colors);
+	const letterHighlight = sample(colors);
+	const badge = sample(colors);
+
 	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
 
@@ -36,8 +40,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 		// focus colors
 		'editorCursor.foreground': focusColor,
 		focusBorder: focusColor,
-		'badge.background': focusColor,
-		'activityBarBadge.background': focusColor,
+
 		'editorBracketMatch.border': chromatism.shade(-20, focusColor).hex,
 		'editorOverviewRuler.bracketMatchForeground': focusColor,
 		'editorBracketMatch.background': `${focusColor}20`,
@@ -48,12 +51,18 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 		'tab.activeBorder': focusColor,
 		'editor.selectionBackground': `${focusColor}30`,
 		// ──────────────────────────────────────────────────────────────────────
+		'list.highlightForeground': letterHighlight,
+		'editorSuggestWidget.highlightForeground': letterHighlight,
+
+		'badge.background': badge,
+		'activityBarBadge.background': badge,
+		'badge.foreground': chromatism.contrastRatio(badge).hex,
+		'activityBarBadge.foreground': chromatism.contrastRatio(badge).hex,
+
 		'button.background': button,
 		'button.hoverBackground': chromatism.shade(-20, button).hex,
 		'button.foreground': chromatism.contrastRatio(button).hex,
 
-		'badge.foreground': chromatism.contrastRatio(focusColor).hex,
-		'activityBarBadge.foreground': chromatism.contrastRatio(focusColor).hex,
 
 		'statusBar.background': chromatism.brightness(-10, bg).hex,
 		'sideBar.background': chromatism.brightness(-5, bg).hex,
