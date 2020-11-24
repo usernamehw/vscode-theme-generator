@@ -256,6 +256,7 @@ export type WorkbenchColors = Partial<{
 	'list.errorForeground': string;
 	'list.filterMatchBackground': string;
 	'list.focusBackground': string;
+	'list.focusForeground': string;
 	'list.highlightForeground': string;
 	'list.hoverBackground': string;
 	'list.inactiveSelectionBackground': string;

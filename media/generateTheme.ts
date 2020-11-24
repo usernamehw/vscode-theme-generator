@@ -50,6 +50,10 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editorGroup.dropBackground': `${focusColor}30`,
 		'tab.activeBorder': focusColor,
 		'editor.selectionBackground': `${focusColor}30`,
+		'list.activeSelectionBackground': `${focusColor}AA`,
+		'list.activeSelectionForeground': chromatism.contrastRatio(focusColor).hex,
+		'list.focusBackground': `${focusColor}CC`,
+		'list.focusForeground': chromatism.contrastRatio(focusColor).hex,
 		// ──────────────────────────────────────────────────────────────────────
 		'list.highlightForeground': letterHighlight,
 		'editorSuggestWidget.highlightForeground': letterHighlight,

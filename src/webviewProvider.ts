@@ -125,42 +125,51 @@ export class GenerateThemePanel {
 	<label><input type="color" id="foregroundInit"> Foreground</label>
 
 	<table class="colors-table">
-		<tbody>
-			<tr>
-				<td><label><input type="color" id="color1Init"> Color1</label><br></td>
-				<td>string</td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color2Init"> Color2</label></td>
-				<td>keyword <code>=</code></td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color3Init"> Color3</label></td>
-				<td>keyword.control <code>import</code></td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color4Init"> Color4</label></td>
-				<td>entity.name.function</td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color5Init"> Color5</label></td>
-				<td>variable.parameter</td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color6Init"> Color6</label></td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td><label><input type="color" id="color7Init"> Color7</label></td>
-				<td>-</td>
-			</tr>
-		</tbody>
+		<tr>
+			<td><label><input type="color" id="color1Init"> Color1</label><br></td>
+			<td>string</td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color2Init"> Color2</label></td>
+			<td>keyword <code>=</code></td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color3Init"> Color3</label></td>
+			<td>keyword.control <code>import</code></td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color4Init"> Color4</label></td>
+			<td>entity.name.function</td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color5Init"> Color5</label></td>
+			<td>variable.parameter</td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color6Init"> Color6</label></td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="color7Init"> Color7</label></td>
+			<td>-</td>
+		</tr>
 	</table>
 
 	<p>
 		<button id="reset" title="Reset main color items to default values">Reset Color Inputs</button>
 		<button id="resetCustomizations" title="Reset items in User Global Settings (settings.json)">Reset Customizations</button>
 	</p>
+
+	<!-- <table>
+		<tr>
+			<td><label><input type="color" id="green"> Green</label></td>
+			<td>Success, diff inserted</td>
+		</tr>
+		<tr>
+			<td><label><input type="color" id="green"> Green</label></td>
+			<td>Error, diff removed</td>
+		</tr>
+	</table> -->
 
 	<script defer nonce="${nonce}" src="${scriptUri}"></script>
 </body>
