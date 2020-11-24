@@ -1,4 +1,4 @@
-import vscode, { commands, ConfigurationTarget, ExtensionMode, workspace } from 'vscode';
+import vscode, { ConfigurationTarget, workspace } from 'vscode';
 import { WebviewSavedState } from './types';
 import { GenerateThemePanel } from './webviewProvider';
 
@@ -24,10 +24,6 @@ export function activate(context: vscode.ExtensionContext) {
 			GenerateThemePanel.createOrShow(context.extensionUri);
 		}),
 	);
-
-	if (context.extensionMode === ExtensionMode.Development) {
-		commands.executeCommand('generateTheme');
-	}
 }
 
 export function saveWebviewState(state: WebviewSavedState) {
