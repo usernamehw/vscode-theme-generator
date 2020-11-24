@@ -33,8 +33,8 @@ const defaultState: WebviewSavedState = Object.freeze({
 	c5: '#FFCE6B',
 	shouldShuffle: true,
 });
-let state: WebviewSavedState = { ...defaultState };
-updateAllElements();
+// @ts-ignore
+let state: WebviewSavedState = {};
 
 $backgroundEl.addEventListener('input', e => {
 	state.bg = (e.target as HTMLInputElement).value;
@@ -129,10 +129,10 @@ window.addEventListener('message', event => {
 	const message: WebviewMessageToWebview = event.data; // The json data that the extension sent
 	switch (message.type) {
 		case 'restoreState': {
-			if (!message.value) {
-				break;
-			}
-			state = message.value;
+			state = {
+				...defaultState,
+				...message.value,
+			};
 			updateAllElements();
 			break;
 		}

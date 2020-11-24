@@ -18,13 +18,7 @@ export class GenerateThemePanel {
 	public static createOrShow(extensionUri: vscode.Uri) {
 		const column = vscode.ViewColumn.Two;
 
-		// If we already have a panel, show it.
-		if (GenerateThemePanel.currentPanel) {
-			GenerateThemePanel.currentPanel._panel.reveal(column);
-			return;
-		}
-
-		// Otherwise, create a new panel.
+		// Create a new panel.
 		const panel = vscode.window.createWebviewPanel(
 			GenerateThemePanel.viewType,
 			'Theme Generator',
@@ -44,10 +38,6 @@ export class GenerateThemePanel {
 		GenerateThemePanel.currentPanel = new GenerateThemePanel(panel, extensionUri);
 	}
 
-	public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
-		GenerateThemePanel.currentPanel = new GenerateThemePanel(panel, extensionUri);
-	}
-
 	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
 		this._panel = panel;
 		this._extensionUri = extensionUri;
@@ -59,6 +49,11 @@ export class GenerateThemePanel {
 		}, null, this._disposables);
 
 		this._panel.webview.html = this._getHtmlForWebview(this._panel.webview);
+
+		this._panel.webview.postMessage({
+			type: 'restoreState',
+			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
+		} as WebviewMessageToWebview);
 
 		// Handle messages from the webview
 		this._panel.webview.onDidReceiveMessage(
@@ -95,20 +90,12 @@ export class GenerateThemePanel {
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
-		// Local path to main script run in the webview
 		const scriptPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js');
-
-		// And the uri we use to load this script in the webview
 		const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
-
-		// Local path to css styles
 		const stylesPathMainPath = vscode.Uri.joinPath(this._extensionUri, 'media', 'main.css');
-
-		// Uri to load styles into webview
 		const stylesMainUri = webview.asWebviewUri(stylesPathMainPath);
 
-		// Use a nonce to only allow specific scripts to be run
-		const nonce = getNonce();
+		const nonce = getNonce();// Use a nonce to only allow specific scripts to be run
 
 		return `
 <!DOCTYPE html>
@@ -138,23 +125,23 @@ export class GenerateThemePanel {
 		<tbody>
 			<tr>
 				<td><label><input type="color" id="color1Init"> Color1</label><br></td>
-				<td>Strings</td>
+				<td>string</td>
 			</tr>
 			<tr>
 				<td><label><input type="color" id="color2Init"> Color2</label></td>
-				<td></td>
+				<td>keyword <code>=</code></td>
 			</tr>
 			<tr>
 				<td><label><input type="color" id="color3Init"> Color3</label></td>
-				<td></td>
+				<td>keyword.control <code>import</code></td>
 			</tr>
 			<tr>
 				<td><label><input type="color" id="color4Init"> Color4</label></td>
-				<td></td>
+				<td>entity.name.function</td>
 			</tr>
 			<tr>
 				<td><label><input type="color" id="color5Init"> Color5</label></td>
-				<td></td>
+				<td>variable.parameter</td>
 			</tr>
 		</tbody>
 	</table>
@@ -166,12 +153,6 @@ export class GenerateThemePanel {
 </html>`;
 	}
 }
-
-vscode.window.registerWebviewPanelSerializer(GenerateThemePanel.viewType, {
-	async deserializeWebviewPanel(webviewPanel: vscode.WebviewPanel, state: any) {
-		GenerateThemePanel.revive(webviewPanel, Global.context.extensionUri);
-	},
-});
 
 function getNonce() {
 	let text = '';

@@ -10,13 +10,30 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 	const string = c1;
 
 	const workbenchColors: WorkbenchColors = {
-		'editor.background': bg,
+		foreground: fg,
 		'editor.foreground': fg,
+		// bg derived
+		'editor.background': bg,
 		'editor.lineHighlightBackground': chromatism.brightness(-5, bg).hex,
 		'editorWhitespace.foreground': chromatism.shade(20, bg).hex,
 		'editorLineNumber.foreground': chromatism.brightness(20, bg).hex,
 		'editorLineNumber.activeForeground': chromatism.brightness(50, bg).hex,
 
+		'editorGroupHeader.tabsBackground': chromatism.brightness(5, bg).hex,
+		'tab.inactiveBackground': chromatism.brightness(5, bg).hex,
+		'tab.activeBackground': bg,
+		'tab.border': chromatism.brightness(-10, bg).hex,
+		'editorGroup.border': chromatism.brightness(-10, bg).hex,
+
+		'titleBar.inactiveBackground': bg,
+		'titleBar.activeBackground': bg,
+
+		'menu.background': bg,
+		'menu.foreground': fg,
+		'menu.selectionBackground': focusColor,
+		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
+
+		// focus colors
 		'editorCursor.foreground': focusColor,
 		focusBorder: focusColor,
 		'badge.background': focusColor,
@@ -29,7 +46,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 		'activityBar.dropBorder': focusColor,
 		'editorGroup.dropBackground': `${focusColor}30`,
 		'tab.activeBorder': focusColor,
-
+		'editor.selectionBackground': `${focusColor}30`,
+		// ──────────────────────────────────────────────────────────────────────
 		'button.background': button,
 		'button.hoverBackground': chromatism.shade(-20, button).hex,
 		'button.foreground': chromatism.contrastRatio(button).hex,
@@ -108,6 +126,14 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5 }) {
 				foreground: c2,
 			},
 		},
+		// {
+		// 	scope: [
+		// 		'entity.name.type',
+		// 	],
+		// 	settings: {
+		// 		foreground: c2,
+		// 	},
+		// },
 		{
 			scope: [
 				'keyword.control',
