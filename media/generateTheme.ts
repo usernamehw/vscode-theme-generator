@@ -8,6 +8,8 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 	const [c1, c2, c3, c4, c5] = shuffle(colors);
 
 	const focusColor = sample(colors);
+	const punctuation = chromatism.shade(-35, fg).hex;
+	const string = c1;
 
 	const workbenchColors: WorkbenchColors = {
 		'editor.background': bg,
@@ -80,7 +82,7 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'punctuation.definition.string',
 			],
 			settings: {
-				foreground: c1,
+				foreground: string,
 			},
 		},
 		{
@@ -150,7 +152,62 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				'meta.brace',
 			],
 			settings: {
-				foreground: chromatism.shade(-35, fg).hex,
+				foreground: punctuation,
+			},
+		},
+		// HTML
+		{
+			scope: [
+				'meta.tag.metadata.doctype entity.name.tag',
+				'meta.tag.metadata.doctype punctuation.definition.tag',
+				'meta.tag.metadata.doctype string', // old doctype
+				'meta.tag.metadata.doctype entity.other.attribute-name.html',
+				'meta.tag.sgml.doctype', // pug
+			],
+			settings: {
+				foreground: punctuation,
+			},
+		},
+		{
+			scope: [
+				'entity.name.tag',
+			],
+			settings: {
+				foreground: c3,
+			},
+		},
+		{
+			scope: [
+				'meta.tag string',
+			],
+			settings: {
+				foreground: string,
+			},
+		},
+		{
+			scope: [
+				'meta.attribute punctuation.definition.string',
+			],
+			settings: {
+				foreground: punctuation,
+			},
+		},
+		{
+			scope: [
+				'meta.tag entity.other.attribute-name',
+				'entity.other.attribute-name.html',
+			],
+			settings: {
+				foreground: c2,
+			},
+		},
+		{
+			scope: [
+				'constant.character.entity',
+				'punctuation.definition.entity',
+			],
+			settings: {
+				foreground: c5,
 			},
 		},
 		// CSS
