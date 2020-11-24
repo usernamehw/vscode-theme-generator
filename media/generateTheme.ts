@@ -210,6 +210,77 @@ export function generateTheme({ bg, fg, color1, color2, color3, color4, color5 }
 				foreground: c5,
 			},
 		},
+		// Markdown/MD
+		{
+			scope: [
+				'entity.name.section.markdown',
+				'markup.heading.setext',
+			],
+			settings: {
+				foreground: c2,
+			},
+		},
+		{
+			scope: [
+				'punctuation.definition.list',
+			],
+			settings: {
+				foreground: c2,
+			},
+		},
+		{
+			scope: [
+				'meta.separator.markdown',
+			],
+			settings: {
+				foreground: c2,
+			},
+		},
+		{
+			scope: [
+				'markup.inline.raw',
+			],
+			settings: {
+				foreground: c3,
+			},
+		},
+		{
+			scope: 'markup.bold',
+			settings: {
+				fontStyle: 'bold',
+			},
+		},
+		{
+			scope: 'markup.italic',
+			settings: {
+				fontStyle: 'italic',
+			},
+		},
+		{
+			scope: [
+				'meta.link punctuation.definition.string',
+				'meta.image punctuation.definition.string',
+			],
+			settings: {
+				foreground: punctuation,
+			},
+		},
+		{
+			scope: [
+				'markup.underline.link',
+			],
+			settings: {
+				foreground: c4,
+			},
+		},
+		{
+			scope: [
+				'markup.quote',
+			],
+			settings: {
+				foreground: c5,
+			},
+		},
 		// CSS
 		{
 			scope: [
