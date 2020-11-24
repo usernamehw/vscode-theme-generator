@@ -12,6 +12,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 
 	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
+	const comment = chromatism.shade(35, bg).hex;
 
 	const workbenchColors: WorkbenchColors = {
 		foreground: fg,
@@ -26,8 +27,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editorGroupHeader.tabsBackground': chromatism.brightness(5, bg).hex,
 		'tab.inactiveBackground': chromatism.brightness(5, bg).hex,
 		'tab.activeBackground': bg,
-		'tab.border': chromatism.brightness(-10, bg).hex,
-		'editorGroup.border': chromatism.brightness(-10, bg).hex,
+		'tab.border': chromatism.shade(-5, bg).hex,
+		'editorGroup.border': chromatism.shade(-5, bg).hex,
 
 		'titleBar.inactiveBackground': bg,
 		'titleBar.activeBackground': bg,
@@ -36,6 +37,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'menu.foreground': fg,
 		'menu.selectionBackground': focusColor,
 		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
+
+		'input.background': chromatism.shade(-10, bg).hex,
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
@@ -50,10 +53,11 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editorGroup.dropBackground': `${focusColor}30`,
 		'tab.activeBorder': focusColor,
 		'editor.selectionBackground': `${focusColor}30`,
-		'list.activeSelectionBackground': `${focusColor}AA`,
-		'list.activeSelectionForeground': chromatism.contrastRatio(focusColor).hex,
-		'list.focusBackground': `${focusColor}CC`,
-		'list.focusForeground': chromatism.contrastRatio(focusColor).hex,
+
+		'list.activeSelectionBackground': `${focusColor}20`,
+		'list.inactiveSelectionBackground': `${focusColor}25`,
+		'list.focusBackground': `${focusColor}30`,
+		'list.hoverBackground': chromatism.brightness(5, bg).hex,
 		// ──────────────────────────────────────────────────────────────────────
 		'list.highlightForeground': letterHighlight,
 		'editorSuggestWidget.highlightForeground': letterHighlight,
@@ -68,9 +72,9 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'button.foreground': chromatism.contrastRatio(button).hex,
 
 
-		'statusBar.background': chromatism.brightness(-10, bg).hex,
-		'sideBar.background': chromatism.brightness(-5, bg).hex,
-		'activityBar.background': chromatism.brightness(-10, bg).hex,
+		'statusBar.background': chromatism.shade(-10, bg).hex,
+		'sideBar.background': chromatism.shade(-5, bg).hex,
+		'activityBar.background': chromatism.shade(-10, bg).hex,
 	};
 	let tokenColors: TokenColors = [
 		// General
@@ -108,7 +112,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 				'punctuation.definition.comment',
 			],
 			settings: {
-				foreground: chromatism.brightness(-30, fg).hex,
+				foreground: comment,
 			},
 		},
 		{
@@ -196,6 +200,15 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 			],
 			settings: {
 				foreground: punctuation,
+			},
+		},
+		// JS
+		{
+			scope: [
+				'comment.block.documentation entity.name.type',
+			],
+			settings: {
+				foreground: c6,
 			},
 		},
 		// HTML
