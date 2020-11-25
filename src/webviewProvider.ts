@@ -1,5 +1,6 @@
 import vscode from 'vscode';
 import { Global, saveWebviewState, WEBVIEW_STATE_STORAGE_KEY } from './extension';
+import { exportAsJson } from './saveTheme';
 import { WebviewMessageFromWebview, WebviewMessageToWebview } from './types';
 import { updateGlobalCustomizationSettings } from './updateTheme';
 
@@ -70,6 +71,9 @@ export class GenerateThemePanel {
 					}
 					case 'resetCustomizations': {
 						updateGlobalCustomizationSettings({}, []);break;
+					}
+					case 'exportAsJson': {
+						exportAsJson(message.value); break;
 					}
 				}
 			},
@@ -158,6 +162,7 @@ export class GenerateThemePanel {
 	<p>
 		<button id="reset" title="Reset main color items to default values">Reset Color Inputs</button>
 		<button id="resetCustomizations" title="Reset items in User Global Settings (settings.json)">Reset Customizations</button>
+		<button id="export">Export as json</button>
 	</p>
 
 	<!-- <table>

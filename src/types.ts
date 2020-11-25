@@ -2,12 +2,13 @@ interface ShowNotification {
 	type: 'showNotification';
 	value: string;
 }
+export interface Theme {
+	workbenchColors: WorkbenchColors;
+	tokenColors: TokenColors;
+}
 interface GenerateTheme {
 	type: 'generateTheme';
-	value: {
-		workbenchColors: WorkbenchColors;
-		tokenColors: TokenColors;
-	};
+	value: Theme;
 }
 interface ResetCustomizations {
 	type: 'resetCustomizations';
@@ -16,8 +17,12 @@ interface SaveState {
 	type: 'saveState';
 	value: WebviewSavedState;
 }
+interface ExportAsJson {
+	type: 'exportAsJson';
+	value: Theme;
+}
 
-export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveState | ResetCustomizations;
+export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveState | ResetCustomizations | ExportAsJson;
 export interface WebviewSavedState {
 	bg: string;
 	fg: string;
@@ -51,6 +56,7 @@ interface RestoreState {
 export type WebviewMessageToWebview = RestoreState;
 
 export type WorkbenchColors = Partial<{
+	'editorWidget.resizeBorder': string;
 	'activityBarBadge.background': string;
 	'tab.hoverBackground': string;
 	'editor.background': string;

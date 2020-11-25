@@ -55,6 +55,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'pickerGroup.border': shade(-10, bg),
 
 		'input.background': shade(-10, bg),
+		'editorWidget.resizeBorder': shade(20, bg),
 
 
 		// focus colors

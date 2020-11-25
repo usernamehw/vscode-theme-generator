@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce';
 import shuffle from 'lodash/shuffle';
-import { VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
+import { Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
 import { generateTheme } from './generateTheme';
 
 /** @ts-ignore */
@@ -17,8 +17,11 @@ const $color5El = document.getElementById('color5Init') as HTMLInputElement;
 const $color6El = document.getElementById('color6Init') as HTMLInputElement;
 const $color7El = document.getElementById('color7Init') as HTMLInputElement;
 const $resetEl = document.getElementById('reset') as HTMLButtonElement;
+const $exportEl = document.getElementById('export') as HTMLButtonElement;
 const $resetCustomizationsEl = document.getElementById('resetCustomizations') as HTMLButtonElement;
 const $shuffleColorsEl = document.getElementById('shuffleColors') as HTMLInputElement;
+
+let currentGeneratedTheme: Theme;
 
 const saveState = debounce(() => {
 	vscodeApi.postMessage({
@@ -81,6 +84,12 @@ $shuffleColorsEl.addEventListener('change', e => {
 	state.shouldShuffle = (e.target as HTMLInputElement).checked;
 	saveState();
 });
+$exportEl.addEventListener('click', e => {
+	vscodeApi.postMessage({
+		type: 'exportAsJson',
+		value: currentGeneratedTheme,
+	});
+});
 
 document.getElementById('generate').addEventListener('click', () => {
 	if (state.shouldShuffle) {
@@ -104,19 +113,20 @@ document.getElementById('generate').addEventListener('click', () => {
 		state.c7 = shuffledColors[indexes[6]];
 		updateAllElements();
 	}
+	currentGeneratedTheme = generateTheme({
+		bg: $backgroundEl.value,
+		fg: $foregroundEl.value,
+		c1: $color1El.value,
+		c2: $color2El.value,
+		c3: $color3El.value,
+		c4: $color4El.value,
+		c5: $color5El.value,
+		c6: $color6El.value,
+		c7: $color7El.value,
+	});
 	vscodeApi.postMessage({
 		type: 'generateTheme',
-		value: generateTheme({
-			bg: $backgroundEl.value,
-			fg: $foregroundEl.value,
-			c1: $color1El.value,
-			c2: $color2El.value,
-			c3: $color3El.value,
-			c4: $color4El.value,
-			c5: $color5El.value,
-			c6: $color6El.value,
-			c7: $color7El.value,
-		}),
+		value: currentGeneratedTheme,
 	});
 });
 
