@@ -115,11 +115,6 @@ export class GenerateThemePanel {
 	<title>Generate</title>
 </head>
 <body>
-	<!-- <input id="themeTypeLight" type="radio" name="themeType" checked>
-	<label for="themeTypeLight">Light</label>
-	<input id="themeTypeDark" type="radio" name="themeType" checked>
-	<label for="themeTypeDark">Dark</label> -->
-
 	<div class="generate-container">
 		<label><input type="checkbox" id="shuffleColors">Shuffle</label>
 		<button id="generate">▶ Generate</button>
@@ -130,31 +125,38 @@ export class GenerateThemePanel {
 
 	<table class="colors-table">
 		<tr>
-			<td><label><input type="color" id="color1Init"> Color1</label><br></td>
-			<td>string</td>
+			<td>1</td>
+			<td><label> <input type="color" id="color1Init"> <input type="text" id="color1InitText"></label></td>
+			<td>string <code>"text"</code></td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color2Init"> Color2</label></td>
+			<td>2</td>
+			<td><label><input type="color" id="color2Init"> <input type="text" id="color2InitText"></label></td>
 			<td>keyword <code>=</code></td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color3Init"> Color3</label></td>
+			<td>3</td>
+			<td><label><input type="color" id="color3Init"> <input type="text" id="color3InitText"></label></td>
 			<td>keyword.control <code>import</code></td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color4Init"> Color4</label></td>
+			<td>4</td>
+			<td><label><input type="color" id="color4Init"> <input type="text" id="color4InitText"></label></td>
 			<td>entity.name.function (function name / method name)</td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color5Init"> Color5</label></td>
+			<td>5</td>
+			<td><label><input type="color" id="color5Init"> <input type="text" id="color5InitText"></label></td>
 			<td>variable.parameter (function parameter)</td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color6Init"> Color6</label></td>
+			<td>6</td>
+			<td><label><input type="color" id="color6Init"> <input type="text" id="color6InitText"></label></td>
 			<td>-</td>
 		</tr>
 		<tr>
-			<td><label><input type="color" id="color7Init"> Color7</label></td>
+			<td>7</td>
+			<td><label><input type="color" id="color7Init"> <input type="text" id="color7InitText"></label></td>
 			<td>entity.name.type (types)</td>
 		</tr>
 	</table>

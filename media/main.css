@@ -47,13 +47,23 @@ button:focus {
 	outline: 1px solid var(--vscode-focusBorder) !important;
 }
 
+input[type='text'] {
+	background-color: var(--vscode-input-background);
+	border: 1px solid var(--vscode-input-border);
+	color: var(--vscode-input-foreground);
+	font-family: var(--vscode-font-family);
+	outline: none;
+	padding: 0.1rem 0.2rem;
+	width: 5rem;
+}
+
 table {
 	border-collapse: collapse;
 }
 
 td {
 	border: 1px solid var(--vscode-editorOverviewRuler-border);
-	padding: 0.1rem 0.5rem;
+	padding: 0.15rem 0.4rem;
 }
 
 .colors-table {
