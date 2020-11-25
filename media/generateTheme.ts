@@ -50,11 +50,12 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'menu.foreground': fg,
 		'menu.selectionBackground': focusColor,
 		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
-		'menu.separatorBackground': shade(-10, bg),
+		'menu.separatorBackground': shade(20, bg),
 		'textSeparator.foreground': shade(-10, bg),
 		'pickerGroup.border': shade(-10, bg),
 
-		'input.background': shade(-5, bg),
+		'input.background': shade(-10, bg),
+
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
@@ -69,6 +70,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'editorGroup.dropBackground': `${focusColor}30`,
 		'tab.activeBorder': focusColor,
 		'editor.selectionBackground': `${focusColor}30`,
+
+		'progressBar.background': focusColor,
 
 		'list.activeSelectionBackground': `${focusColor}20`,
 		'list.inactiveSelectionBackground': `${focusColor}25`,

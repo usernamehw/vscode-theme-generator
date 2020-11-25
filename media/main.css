@@ -20,7 +20,7 @@ ul {
 }
 
 body {
-	padding: 0.5rem;
+	padding: 0.5rem 1rem;
 }
 
 img {
@@ -53,11 +53,11 @@ table {
 
 td {
 	border: 1px solid var(--vscode-editorOverviewRuler-border);
-	padding: 0.2rem 0.5rem;
+	padding: 0.1rem 0.5rem;
 }
 
 .colors-table {
-	margin: 1rem 0;
+	margin: 0.5rem 0;
 }
 
 .generate-container {
