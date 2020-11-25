@@ -139,11 +139,11 @@ export class GenerateThemePanel {
 		</tr>
 		<tr>
 			<td><label><input type="color" id="color4Init"> Color4</label></td>
-			<td>entity.name.function</td>
+			<td>entity.name.function (function name / method name)</td>
 		</tr>
 		<tr>
 			<td><label><input type="color" id="color5Init"> Color5</label></td>
-			<td>variable.parameter</td>
+			<td>variable.parameter (function parameter)</td>
 		</tr>
 		<tr>
 			<td><label><input type="color" id="color6Init"> Color6</label></td>
