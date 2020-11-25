@@ -57,6 +57,10 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'input.background': shade(-10, bg),
 		'editorWidget.resizeBorder': shade(20, bg),
 
+		'editorMarkerNavigation.background': bg,
+		'peekViewResult.background': shade(5, bg),
+		'peekViewTitle.background': shade(-5, bg),
+
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
