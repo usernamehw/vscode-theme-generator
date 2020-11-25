@@ -37,7 +37,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'tab.inactiveBackground': brightness(5, bg),
 		'tab.activeBackground': bg,
 		'tab.border': shade(-5, bg),
-		'tab.hoverBackground': shade(5, bg),
+		'tab.hoverBackground': shade(10, bg),
 		'editorGroup.border': shade(-5, bg),
 		'sideBarSectionHeader.background': shade(-10, bg),
 
@@ -88,6 +88,9 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 		'button.background': button,
 		'button.hoverBackground': shade(-20, button),
 		'button.foreground': chromatism.contrastRatio(button).hex,
+		'extensionButton.prominentBackground': button,
+		'extensionButton.prominentForeground': chromatism.contrastRatio(button).hex,
+		'extensionButton.prominentHoverBackground': shade(-20, button),
 	};
 	let tokenColors: TokenColors = [
 		// General
