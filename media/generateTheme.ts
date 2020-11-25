@@ -11,8 +11,10 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 	const letterHighlight = sample(colors);
 	const badge = sample(colors);
 
-	const punctuation = chromatism.shade(-35, fg).hex;
 	const string = c1;
+	const functionName = c4;
+
+	const punctuation = chromatism.shade(-35, fg).hex;
 	const comment = chromatism.shade(40, bg).hex;
 
 	const workbenchColors: WorkbenchColors = {
@@ -159,14 +161,18 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 				foreground: c2,
 			},
 		},
-		// {
-		// 	scope: [
-		// 		'entity.name.type',
-		// 	],
-		// 	settings: {
-		// 		foreground: c2,
-		// 	},
-		// },
+		{
+			scope: [
+				'entity.name.type',
+				'support.type.primitive',
+				'support.type.builtin',
+				'meta.type.annotation entity.name.type',
+				'meta.type.parameters entity.name.type',
+			],
+			settings: {
+				foreground: c7,
+			},
+		},
 		{
 			scope: [
 				'keyword.control',
@@ -184,9 +190,31 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 			scope: [
 				'entity.name.function',
 				'support.class',
+				'support.function',
+				'new.expr entity.name.type',
 			],
 			settings: {
-				foreground: c4,
+				foreground: functionName,
+			},
+		},
+		{
+			scope: [
+				'entity.other.inherited-class',
+			],
+			settings: {
+				foreground: c6,
+			},
+		},
+		{
+			scope: [
+				'punctuation.definition.typeparameters',
+				'keyword.operator.type',
+				'keyword.operator.optional',
+				'source.tsx punctuation.section.embedded',
+				'source.jsx punctuation.section.embedded',
+			],
+			settings: {
+				foreground: c6,
 			},
 		},
 		{

@@ -151,7 +151,7 @@ export class GenerateThemePanel {
 		</tr>
 		<tr>
 			<td><label><input type="color" id="color7Init"> Color7</label></td>
-			<td>-</td>
+			<td>entity.name.type (types)</td>
 		</tr>
 	</table>
 
