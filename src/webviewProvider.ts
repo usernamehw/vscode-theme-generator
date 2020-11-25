@@ -19,6 +19,11 @@ export class GenerateThemePanel {
 	public static createOrShow(extensionUri: vscode.Uri) {
 		const column = vscode.ViewColumn.Two;
 
+		if (GenerateThemePanel.currentPanel) {
+			GenerateThemePanel.currentPanel._panel.reveal(column);
+			return;
+		}
+
 		// Create a new panel.
 		const panel = vscode.window.createWebviewPanel(
 			GenerateThemePanel.viewType,
@@ -51,10 +56,17 @@ export class GenerateThemePanel {
 
 		this._panel.webview.html = this._getHtmlForWebview(this._panel.webview);
 
-		this._panel.webview.postMessage({
-			type: 'restoreState',
-			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
-		} as WebviewMessageToWebview);
+		this._panel.onDidChangeViewState(
+			e => {
+				if (this._panel.visible) {
+					this._restoreState();
+				}
+			},
+			null,
+			this._disposables,
+		);
+
+		this._restoreState();
 
 		// Handle messages from the webview
 		this._panel.webview.onDidReceiveMessage(
@@ -80,6 +92,13 @@ export class GenerateThemePanel {
 			null,
 			this._disposables,
 		);
+	}
+
+	private _restoreState() {
+		this._panel.webview.postMessage({
+			type: 'restoreState',
+			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
+		} as WebviewMessageToWebview);
 	}
 
 	public dispose() {
