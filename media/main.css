@@ -61,6 +61,7 @@ td {
 }
 
 .generate-container {
+	background-color: var(--vscode-editor-background);
 	position: fixed;
 	right: 0.5rem;
 	top: 0.5rem;
