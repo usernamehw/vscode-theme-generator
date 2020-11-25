@@ -7,26 +7,30 @@ import { generateTheme } from './generateTheme';
 // eslint-disable-next-line no-undef
 const vscodeApi: VscodeWebviewApi = acquireVsCodeApi();
 
-const $backgroundEl = document.getElementById('backgroundInit') as HTMLInputElement;
-const $foregroundEl = document.getElementById('foregroundInit') as HTMLInputElement;
-const $color1El = document.getElementById('color1Init') as HTMLInputElement;
-const $color1TextEl = document.getElementById('color1InitText') as HTMLInputElement;
-const $color2El = document.getElementById('color2Init') as HTMLInputElement;
-const $color2TextEl = document.getElementById('color2InitText') as HTMLInputElement;
-const $color3El = document.getElementById('color3Init') as HTMLInputElement;
-const $color3TextEl = document.getElementById('color3InitText') as HTMLInputElement;
-const $color4El = document.getElementById('color4Init') as HTMLInputElement;
-const $color4TextEl = document.getElementById('color4InitText') as HTMLInputElement;
-const $color5El = document.getElementById('color5Init') as HTMLInputElement;
-const $color5TextEl = document.getElementById('color5InitText') as HTMLInputElement;
-const $color6El = document.getElementById('color6Init') as HTMLInputElement;
-const $color6TextEl = document.getElementById('color6InitText') as HTMLInputElement;
-const $color7El = document.getElementById('color7Init') as HTMLInputElement;
-const $color7TextEl = document.getElementById('color7InitText') as HTMLInputElement;
-const $resetEl = document.getElementById('reset') as HTMLButtonElement;
-const $exportEl = document.getElementById('export') as HTMLButtonElement;
-const $resetCustomizationsEl = document.getElementById('resetCustomizations') as HTMLButtonElement;
-const $shuffleColorsEl = document.getElementById('shuffleColors') as HTMLInputElement;
+const $background = document.getElementById('backgroundInit') as HTMLInputElement;
+const $foreground = document.getElementById('foregroundInit') as HTMLInputElement;
+const $color1 = document.getElementById('color1Init') as HTMLInputElement;
+const $color1Text = document.getElementById('color1InitText') as HTMLInputElement;
+const $color2 = document.getElementById('color2Init') as HTMLInputElement;
+const $color2Text = document.getElementById('color2InitText') as HTMLInputElement;
+const $color3 = document.getElementById('color3Init') as HTMLInputElement;
+const $color3Text = document.getElementById('color3InitText') as HTMLInputElement;
+const $color4 = document.getElementById('color4Init') as HTMLInputElement;
+const $color4Text = document.getElementById('color4InitText') as HTMLInputElement;
+const $color5 = document.getElementById('color5Init') as HTMLInputElement;
+const $color5Text = document.getElementById('color5InitText') as HTMLInputElement;
+const $color6 = document.getElementById('color6Init') as HTMLInputElement;
+const $color6Text = document.getElementById('color6InitText') as HTMLInputElement;
+const $color7 = document.getElementById('color7Init') as HTMLInputElement;
+const $color7Text = document.getElementById('color7InitText') as HTMLInputElement;
+const $reset = document.getElementById('reset') as HTMLButtonElement;
+const $export = document.getElementById('export') as HTMLButtonElement;
+const $resetCustomizations = document.getElementById('resetCustomizations') as HTMLButtonElement;
+const $shuffleColors = document.getElementById('shuffleColors') as HTMLInputElement;
+const $green = document.getElementById('green') as HTMLInputElement;
+const $greenText = document.getElementById('greenText') as HTMLInputElement;
+const $red = document.getElementById('red') as HTMLInputElement;
+const $redText = document.getElementById('redText') as HTMLInputElement;
 
 let currentGeneratedTheme: Theme;
 
@@ -38,7 +42,7 @@ const saveState = debounce(() => {
 }, 500);
 const defaultState: WebviewSavedState = Object.freeze({
 	fg: '#D9D9D9',
-	bg: '#333333',
+	bg: '#292929',
 	c1: '#399EE6',
 	c2: '#F07171',
 	c3: '#78BD65',
@@ -46,97 +50,120 @@ const defaultState: WebviewSavedState = Object.freeze({
 	c5: '#FFCE6B',
 	c6: '#B56BFF',
 	c7: '#EB3D54',
+	green: '#78BD65',
+	red: '#F07171',
 	shouldShuffle: true,
 });
 // @ts-ignore
 let state: WebviewSavedState = {};
 
-$backgroundEl.addEventListener('input', e => {
+$background.addEventListener('input', e => {
 	state.bg = (e.target as HTMLInputElement).value;
 	saveState();
 });
-$foregroundEl.addEventListener('input', e => {
+$foreground.addEventListener('input', e => {
 	state.fg = (e.target as HTMLInputElement).value;
 	saveState();
 });
 
-$color1El.addEventListener('input', e => {
-	state.c1 = $color1El.value;
-	$color1TextEl.value = $color1El.value;
+$color1.addEventListener('input', e => {
+	state.c1 = $color1.value;
+	$color1Text.value = $color1.value;
 	saveState();
 });
-$color2El.addEventListener('input', e => {
-	state.c2 = $color2El.value;
-	$color2TextEl.value = $color2El.value;
+$color2.addEventListener('input', e => {
+	state.c2 = $color2.value;
+	$color2Text.value = $color2.value;
 	saveState();
 });
-$color3El.addEventListener('input', e => {
-	state.c3 = $color3El.value;
-	$color3TextEl.value = $color3El.value;
+$color3.addEventListener('input', e => {
+	state.c3 = $color3.value;
+	$color3Text.value = $color3.value;
 	saveState();
 });
-$color4El.addEventListener('input', e => {
-	state.c4 = $color4El.value;
-	$color4TextEl.value = $color4El.value;
+$color4.addEventListener('input', e => {
+	state.c4 = $color4.value;
+	$color4Text.value = $color4.value;
 	saveState();
 });
-$color5El.addEventListener('input', e => {
-	state.c5 = $color5El.value;
-	$color5TextEl.value = $color5El.value;
+$color5.addEventListener('input', e => {
+	state.c5 = $color5.value;
+	$color5Text.value = $color5.value;
 	saveState();
 });
-$color6El.addEventListener('input', e => {
-	state.c6 = $color6El.value;
-	$color6TextEl.value = $color6El.value;
+$color6.addEventListener('input', e => {
+	state.c6 = $color6.value;
+	$color6Text.value = $color6.value;
 	saveState();
 });
-$color7El.addEventListener('input', e => {
-	state.c7 = $color7El.value;
-	$color7TextEl.value = $color7El.value;
+$color7.addEventListener('input', e => {
+	state.c7 = $color7.value;
+	$color7Text.value = $color7.value;
 	saveState();
 });
-$color1TextEl.addEventListener('input', e => {
-	state.c1 = $color1TextEl.value;
-	$color1El.value = $color1TextEl.value;
+$color1Text.addEventListener('input', e => {
+	state.c1 = $color1Text.value;
+	$color1.value = $color1Text.value;
 	saveState();
 });
-$color2TextEl.addEventListener('input', e => {
-	state.c2 = $color2TextEl.value;
-	$color2El.value = $color2TextEl.value;
+$color2Text.addEventListener('input', e => {
+	state.c2 = $color2Text.value;
+	$color2.value = $color2Text.value;
 	saveState();
 });
-$color3TextEl.addEventListener('input', e => {
-	state.c3 = $color3TextEl.value;
-	$color3El.value = $color3TextEl.value;
+$color3Text.addEventListener('input', e => {
+	state.c3 = $color3Text.value;
+	$color3.value = $color3Text.value;
 	saveState();
 });
-$color4TextEl.addEventListener('input', e => {
-	state.c4 = $color4TextEl.value;
-	$color4El.value = $color4TextEl.value;
+$color4Text.addEventListener('input', e => {
+	state.c4 = $color4Text.value;
+	$color4.value = $color4Text.value;
 	saveState();
 });
-$color5TextEl.addEventListener('input', e => {
-	state.c5 = $color5TextEl.value;
-	$color5El.value = $color5TextEl.value;
+$color5Text.addEventListener('input', e => {
+	state.c5 = $color5Text.value;
+	$color5.value = $color5Text.value;
 	saveState();
 });
-$color6TextEl.addEventListener('input', e => {
-	state.c6 = $color6TextEl.value;
-	$color6El.value = $color6TextEl.value;
+$color6Text.addEventListener('input', e => {
+	state.c6 = $color6Text.value;
+	$color6.value = $color6Text.value;
 	saveState();
 });
-$color7TextEl.addEventListener('input', e => {
-	state.c7 = $color7TextEl.value;
-	$color7El.value = $color7TextEl.value;
+$color7Text.addEventListener('input', e => {
+	state.c7 = $color7Text.value;
+	$color7.value = $color7Text.value;
 	saveState();
 });
 
+$red.addEventListener('input', e => {
+	state.red = $red.value;
+	$redText.value = $red.value;
+	saveState();
+});
+$green.addEventListener('input', e => {
+	state.green = $green.value;
+	$greenText.value = $green.value;
+	saveState();
+});
 
-$shuffleColorsEl.addEventListener('change', e => {
+$redText.addEventListener('input', e => {
+	state.red = $redText.value;
+	$red.value = $redText.value;
+	saveState();
+});
+$greenText.addEventListener('input', e => {
+	state.green = $greenText.value;
+	$green.value = $greenText.value;
+	saveState();
+});
+
+$shuffleColors.addEventListener('change', e => {
 	state.shouldShuffle = (e.target as HTMLInputElement).checked;
 	saveState();
 });
-$exportEl.addEventListener('click', e => {
+$export.addEventListener('click', e => {
 	vscodeApi.postMessage({
 		type: 'exportAsJson',
 		value: currentGeneratedTheme,
@@ -166,15 +193,17 @@ document.getElementById('generate').addEventListener('click', () => {
 		updateAllElements();
 	}
 	currentGeneratedTheme = generateTheme({
-		bg: $backgroundEl.value,
-		fg: $foregroundEl.value,
-		c1: $color1El.value,
-		c2: $color2El.value,
-		c3: $color3El.value,
-		c4: $color4El.value,
-		c5: $color5El.value,
-		c6: $color6El.value,
-		c7: $color7El.value,
+		bg: $background.value,
+		fg: $foreground.value,
+		c1: $color1.value,
+		c2: $color2.value,
+		c3: $color3.value,
+		c4: $color4.value,
+		c5: $color5.value,
+		c6: $color6.value,
+		c7: $color7.value,
+		green: $green.value,
+		red: $red.value,
 	});
 	vscodeApi.postMessage({
 		type: 'generateTheme',
@@ -189,35 +218,43 @@ export function showNotification(text: string) {
 	});
 }
 
-$resetEl.addEventListener('click', () => {
+$reset.addEventListener('click', () => {
 	state = { ...defaultState };
 	saveState();
 	updateAllElements();
 });
-$resetCustomizationsEl.addEventListener('click', () => {
+$resetCustomizations.addEventListener('click', () => {
 	vscodeApi.postMessage({
 		type: 'resetCustomizations',
 	});
 });
 
 function updateAllElements() {
-	$backgroundEl.value = state.bg;
-	$foregroundEl.value = state.fg;
-	$color1El.value = state.c1;
-	$color1TextEl.value = state.c1;
-	$color2TextEl.value = state.c2;
-	$color3TextEl.value = state.c3;
-	$color4TextEl.value = state.c4;
-	$color5TextEl.value = state.c5;
-	$color6TextEl.value = state.c6;
-	$color7TextEl.value = state.c7;
-	$color2El.value = state.c2;
-	$color3El.value = state.c3;
-	$color4El.value = state.c4;
-	$color5El.value = state.c5;
-	$color6El.value = state.c6;
-	$color7El.value = state.c7;
-	$shuffleColorsEl.checked = state.shouldShuffle;
+	$background.value = state.bg;
+	$foreground.value = state.fg;
+
+	$color1Text.value = state.c1;
+	$color2Text.value = state.c2;
+	$color3Text.value = state.c3;
+	$color4Text.value = state.c4;
+	$color5Text.value = state.c5;
+	$color6Text.value = state.c6;
+	$color7Text.value = state.c7;
+
+	$color1.value = state.c1;
+	$color2.value = state.c2;
+	$color3.value = state.c3;
+	$color4.value = state.c4;
+	$color5.value = state.c5;
+	$color6.value = state.c6;
+	$color7.value = state.c7;
+
+	$green.value = state.green;
+	$red.value = state.red;
+	$greenText.value = state.green;
+	$redText.value = state.red;
+
+	$shuffleColors.checked = state.shouldShuffle;
 }
 
 window.addEventListener('message', event => {

@@ -20,7 +20,7 @@ ul {
 }
 
 body {
-	padding: 0.5rem 1rem;
+	padding: 0.5rem;
 }
 
 img {
@@ -59,6 +59,7 @@ input[type='text'] {
 
 table {
 	border-collapse: collapse;
+	margin: 0.5rem 0;
 }
 
 td {
@@ -66,13 +67,13 @@ td {
 	padding: 0.15rem 0.4rem;
 }
 
-.colors-table {
-	margin: 0.5rem 0;
-}
-
 .generate-container {
 	background-color: var(--vscode-editor-background);
 	position: fixed;
 	right: 0.5rem;
 	top: 0.5rem;
+}
+
+.row {
+	display: flex;
 }

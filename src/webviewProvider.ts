@@ -142,60 +142,63 @@ export class GenerateThemePanel {
 	<label><input type="color" id="backgroundInit"> Background</label>
 	<label><input type="color" id="foregroundInit"> Foreground</label>
 
-	<table class="colors-table">
-		<tr>
-			<td>1</td>
-			<td><label> <input type="color" id="color1Init"> <input type="text" id="color1InitText"></label></td>
-			<td>string <code>"text"</code></td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td><label><input type="color" id="color2Init"> <input type="text" id="color2InitText"></label></td>
-			<td>keyword <code>=</code></td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td><label><input type="color" id="color3Init"> <input type="text" id="color3InitText"></label></td>
-			<td>keyword.control <code>import</code></td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td><label><input type="color" id="color4Init"> <input type="text" id="color4InitText"></label></td>
-			<td>entity.name.function (function name / method name)</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td><label><input type="color" id="color5Init"> <input type="text" id="color5InitText"></label></td>
-			<td>variable.parameter (function parameter)</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td><label><input type="color" id="color6Init"> <input type="text" id="color6InitText"></label></td>
-			<td>-</td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td><label><input type="color" id="color7Init"> <input type="text" id="color7InitText"></label></td>
-			<td>entity.name.type (types)</td>
-		</tr>
-	</table>
+	<div class="row">
+		<table>
+			<tr>
+				<td>1</td>
+				<td><label> <input type="color" id="color1Init"> <input type="text" id="color1InitText"></label></td>
+				<td>string <code>"text"</code></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><label><input type="color" id="color2Init"> <input type="text" id="color2InitText"></label></td>
+				<td>keyword <code>=</code></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><label><input type="color" id="color3Init"> <input type="text" id="color3InitText"></label></td>
+				<td>keyword.control <code>import</code></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><label><input type="color" id="color4Init"> <input type="text" id="color4InitText"></label></td>
+				<td>function name</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><label><input type="color" id="color5Init"> <input type="text" id="color5InitText"></label></td>
+				<td>function parameter</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><label><input type="color" id="color6Init"> <input type="text" id="color6InitText"></label></td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><label><input type="color" id="color7Init"> <input type="text" id="color7InitText"></label></td>
+				<td>types</td>
+			</tr>
+		</table>
 
+		<table>
+			<tr>
+				<td><input type="color" id="green"> <input type="text" id="greenText"></td>
+				<td>Success, diff inserted</td>
+			</tr>
+			<tr>
+				<td><input type="color" id="red"> <input type="text" id="redText"></td>
+				<td>Error, diff removed</td>
+			</tr>
+		</table>
+	</div>
 	<p>
 		<button id="reset" title="Reset main color items to default values">Reset Color Inputs</button>
 		<button id="resetCustomizations" title="Reset items in User Global Settings (settings.json)">Reset Customizations</button>
 		<button id="export">Export as json</button>
 	</p>
 
-	<!-- <table>
-		<tr>
-			<td><label><input type="color" id="green"> Green</label></td>
-			<td>Success, diff inserted</td>
-		</tr>
-		<tr>
-			<td><label><input type="color" id="green"> Green</label></td>
-			<td>Error, diff removed</td>
-		</tr>
-	</table> -->
+
 
 	<script defer nonce="${nonce}" src="${scriptUri}"></script>
 </body>

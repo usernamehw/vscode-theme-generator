@@ -3,7 +3,7 @@ import sample from 'lodash/sample';
 import { TokenColors, WorkbenchColors } from '../src/types';
 import { brightness, shade } from './colorUtils';
 
-export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
+export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }) {
 	const colors = [c1, c2, c3, c4, c5, c6, c7];
 
 	const focusColor = sample(colors);
@@ -19,14 +19,27 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7 }) {
 
 	const workbenchColors: WorkbenchColors = {
 		foreground: fg,
+
 		'editor.foreground': fg,
-		// bg derived
 		'editor.background': bg,
 		'editor.lineHighlightBackground': brightness(-5, bg),
 		'editorWhitespace.foreground': shade(20, bg),
 		'editorLineNumber.foreground': brightness(20, bg),
 		'editorLineNumber.activeForeground': brightness(50, bg),
 		'editorOverviewRuler.border': shade(10, bg),
+		'editorHoverWidget.border': shade(-10, bg),
+
+		errorForeground: red,
+		'editorError.foreground': red,
+		'list.errorForeground': red,
+
+		'diffEditor.insertedTextBackground': `${green}25`,
+		'diffEditor.removedTextBackground': `${red}30`,
+		'gitDecoration.addedResourceForeground': green,
+		'gitDecoration.deletedResourceForeground': red,
+		'editorGutter.addedBackground': green,
+		'editorGutter.deletedBackground': red,
+
 		'scrollbarSlider.background': `${shade(30, bg)}40`,
 		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
 		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,

@@ -33,6 +33,8 @@ export interface WebviewSavedState {
 	c5: string;
 	c6: string;
 	c7: string;
+	green: string;
+	red: string;
 	shouldShuffle: boolean;
 }
 
