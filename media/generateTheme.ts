@@ -18,6 +18,7 @@ export function generateTheme({
 	const markdownCode = sample(colors);
 
 	const bracketMatch = focusColor;
+	const selection = focusColor;
 
 	const string = c1;
 	const escape = c3;
@@ -35,7 +36,7 @@ export function generateTheme({
 		focusBorder: focusColor,
 		foreground: fg,
 		'widget.shadow': undefined,
-		'selection.background': `${focusColor}80`,
+		'selection.background': `${selection}80`,
 		descriptionForeground: undefined,
 		errorForeground: error,
 		'icon.foreground': undefined,
@@ -136,10 +137,10 @@ export function generateTheme({
 		'sideBarSectionHeader.border': undefined,
 
 		'minimap.findMatchHighlight': undefined,
-		'minimap.selectionHighlight': undefined,
+		'minimap.selectionHighlight': `${selection}80`,
 		'minimap.errorHighlight': error,
 		'minimap.warningHighlight': warning,
-		'minimap.background': undefined,
+		'minimap.background': shade(-1, bg),
 		'minimapSlider.background': undefined,
 		'minimapSlider.hoverBackground': undefined,
 		'minimapSlider.activeBackground': undefined,
@@ -190,7 +191,7 @@ export function generateTheme({
 		'editorCursor.background': chromatism.contrastRatio(focusColor).hex,
 		'editorCursor.foreground': focusColor,
 
-		'editor.selectionBackground': `${focusColor}30`,
+		'editor.selectionBackground': `${selection}30`,
 		'editor.selectionForeground': undefined,
 		'editor.inactiveSelectionBackground': undefined,
 		'editor.selectionHighlightBackground': undefined,
@@ -242,7 +243,7 @@ export function generateTheme({
 		'editorOverviewRuler.border': shade(10, bg),
 		'editorOverviewRuler.findMatchForeground': undefined,
 		'editorOverviewRuler.rangeHighlightForeground': undefined,
-		'editorOverviewRuler.selectionHighlightForeground': undefined,
+		'editorOverviewRuler.selectionHighlightForeground': selection,
 		'editorOverviewRuler.wordHighlightForeground': undefined,
 		'editorOverviewRuler.wordHighlightStrongForeground': undefined,
 		'editorOverviewRuler.modifiedForeground': modified,
@@ -425,7 +426,7 @@ export function generateTheme({
 		'terminal.ansiWhite': undefined,
 		'terminal.ansiBrightYellow': undefined,
 		'terminal.ansiYellow': undefined,
-		'terminal.selectionBackground': undefined,
+		'terminal.selectionBackground': selection,
 		'terminalCursor.foreground': focusColor,
 		'terminalCursor.background': chromatism.contrastRatio(focusColor).hex,
 
