@@ -1,3 +1,7 @@
+## 0.0.3 `27 Nov 2020`
+
+- 🆗 Various tweaks
+
 ## 0.0.2 `25 Nov 2020`
 
 - ✨ Add secondary text input for color
