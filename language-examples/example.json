@@ -1,0 +1,21 @@
+{
+    "number": 12,
+    "nested": {
+        "string": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis temporibus corporis necessitatibus est! Tenetur ab, fuga a optio nam sed amet porro vero dignissimos, cum praesentium, architecto delectus? Culpa, fugiat. Unde saepe beatae, quas dolor consectetur ea ullam magni tenetur reprehenderit quae qui nesciunt libero debitis harum vero quod cupiditate aut magnam! Ullam quaerat rem cupiditate sapiente cum iure cumque! Iure dicta officia temporibus at, molestias numquam illo beatae dolor explicabo impedit eius architecto quos et deleniti similique quidem quod nostrum voluptatem necessitatibus? Numquam sit ipsum dignissimos deserunt voluptatum. Corporis! Unde dicta recusandae in harum vitae quasi laboriosam sint, quas illum accusantium laudantium eum deleniti, similique fugit ad animi quos molestiae, vel non rerum. Ipsum possimus aut dolor sit quos. Necessitatibus vel quos nemo minus natus veniam accusamus quae officia atque voluptas, ullam reprehenderit voluptatum, quia delectus cupiditate velit itaque deleniti dolore sint, quibusdam dignissimos quasi sequi doloremque? Obcaecati, autem."
+    },
+    "array": [
+        1, 2, 3
+    ],
+    "null": null,
+    "boolean1": true,
+	"boolean2": false,
+	"nested0": {
+		"nested1": {
+			"nested3": {
+				"nested4": {
+					"nested5": "string"
+				}
+			}
+		}
+	}
+}
