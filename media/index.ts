@@ -42,14 +42,14 @@ const saveState = debounce(() => {
 }, 500);
 const defaultState: WebviewSavedState = Object.freeze({
 	fg: '#D9D9D9',
-	bg: '#292929',
+	bg: '#2e2e2e',
 	c1: '#399EE6',
 	c2: '#F07171',
 	c3: '#78BD65',
 	c4: '#EF7C2A',
 	c5: '#FFCE6B',
-	c6: '#B56BFF',
-	c7: '#EB3D54',
+	c6: '#4cbf99',
+	c7: '#a470d8',
 	green: '#78BD65',
 	red: '#F07171',
 	shouldShuffle: true,

@@ -10,15 +10,111 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 	const button = sample(colors);
 	const letterHighlight = sample(colors);
 	const badge = sample(colors);
+	const markdownCode = sample(colors);
 
 	const string = c1;
 	const functionName = c4;
 
 	const punctuation = chromatism.shade(-35, fg).hex;
-	const comment = chromatism.shade(40, bg).hex;
+	const comment = chromatism.shade(50, bg).hex;
 
 	const workbenchColors: WorkbenchColors = {
+		contrastActiveBorder: undefined,
+		contrastBorder: undefined,
+
+		focusBorder: focusColor,
 		foreground: fg,
+		'widget.shadow': undefined,
+		'selection.background': `${focusColor}80`,
+		descriptionForeground: undefined,
+		errorForeground: red,
+		'icon.foreground': undefined,
+
+		'window.activeBorder': undefined,
+		'window.inactiveBorder': undefined,
+
+		'textBlockQuote.background': undefined,
+		'textBlockQuote.border': undefined,
+		'textCodeBlock.background': undefined,
+		'textLink.foreground': undefined,
+		'textLink.activeForeground': undefined,
+		'textPreformat.foreground': markdownCode,
+		'textSeparator.foreground': shade(-10, bg),
+
+		'button.background': button,
+		'button.foreground': chromatism.contrastRatio(button).hex,
+		'button.hoverBackground': shade(-20, button),
+		'button.secondaryBackground': undefined,
+		'button.secondaryForeground': undefined,
+		'button.secondaryHoverBackground': undefined,
+		'checkbox.background': undefined,
+		'checkbox.foreground': undefined,
+		'checkbox.border': undefined,
+
+		'dropdown.background': brightness(5, bg),
+		'dropdown.listBackground': undefined,
+		'dropdown.foreground': undefined,
+		'dropdown.border': undefined,
+
+		'input.background': shade(-10, bg),
+		'input.border': undefined,
+		'input.foreground': undefined,
+		'input.placeholderForeground': undefined,
+		'inputOption.activeBackground': undefined,
+		'inputOption.activeBorder': undefined,
+		'inputOption.activeForeground': undefined,
+		'inputValidation.errorBackground': `${red}90`,
+		'inputValidation.errorBorder': red,
+		'inputValidation.errorForeground': chromatism.contrastRatio(red).hex,
+		'inputValidation.infoBackground': undefined,
+		'inputValidation.infoBorder': undefined,
+		'inputValidation.infoForeground': undefined,
+		'inputValidation.warningBackground': undefined,
+		'inputValidation.warningBorder': undefined,
+		'inputValidation.warningForeground': undefined,
+
+		'scrollbar.shadow': undefined, // top editor shadow
+		'scrollbarSlider.background': `${shade(30, bg)}40`,
+		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
+		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,
+
+		'badge.background': badge,
+		'badge.foreground': chromatism.contrastRatio(badge).hex,
+
+		'progressBar.background': focusColor,
+
+		'list.activeSelectionBackground': `${focusColor}20`,
+		'list.activeSelectionForeground': undefined,
+		'list.dropBackground': undefined,
+		'list.focusBackground': `${focusColor}30`,
+		'list.focusForeground': undefined,
+		'list.highlightForeground': letterHighlight,
+		'list.hoverBackground': brightness(5, bg),
+		'list.hoverForeground': undefined,
+		'list.inactiveSelectionBackground': `${focusColor}25`,
+		'list.inactiveSelectionForeground': undefined,
+		'list.inactiveFocusBackground': undefined,
+		'list.invalidItemForeground': undefined,
+		'list.errorForeground': red,
+		'list.warningForeground': undefined,
+		'listFilterWidget.background': undefined,
+		'listFilterWidget.outline': undefined,
+		'listFilterWidget.noMatchesOutline': undefined,
+		'list.filterMatchBackground': undefined,
+		'list.filterMatchBorder': undefined,
+		'tree.indentGuidesStroke': undefined,
+		'list.deemphasizedForeground': undefined,
+
+
+
+
+
+
+
+
+
+
+
 
 		'editor.foreground': fg,
 		'editor.background': bg,
@@ -29,9 +125,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'editorOverviewRuler.border': shade(10, bg),
 		'editorHoverWidget.border': shade(-10, bg),
 
-		errorForeground: red,
 		'editorError.foreground': red,
-		'list.errorForeground': red,
 
 		'diffEditor.insertedTextBackground': `${green}25`,
 		'diffEditor.removedTextBackground': `${red}30`,
@@ -40,18 +134,15 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'editorGutter.addedBackground': green,
 		'editorGutter.deletedBackground': red,
 
-		'scrollbarSlider.background': `${shade(30, bg)}40`,
-		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
-		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,
-
+		'extensionButton.prominentBackground': button,
 		'statusBar.background': shade(-10, bg),
 		'sideBar.background': shade(-5, bg),
 		'activityBar.background': shade(-10, bg), // shade(-10, bg)
 
-		'editorGroupHeader.tabsBackground': brightness(5, bg),
-		'tab.inactiveBackground': brightness(5, bg),
+		'editorGroupHeader.tabsBackground': shade(5, bg),
+		'tab.inactiveBackground': shade(5, bg),
 		'tab.activeBackground': bg,
-		'tab.border': shade(-5, bg),
+		'tab.border': shade(10, bg),
 		'tab.hoverBackground': shade(10, bg),
 		'editorGroup.border': shade(-5, bg),
 		'sideBarSectionHeader.background': shade(-10, bg),
@@ -64,10 +155,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'menu.selectionBackground': focusColor,
 		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
 		'menu.separatorBackground': shade(20, bg),
-		'textSeparator.foreground': shade(-10, bg),
 		'pickerGroup.border': shade(-10, bg),
 
-		'input.background': shade(-10, bg),
 		'editorWidget.resizeBorder': shade(20, bg),
 
 		'editorMarkerNavigation.background': bg,
@@ -77,11 +166,16 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 
 		// focus colors
 		'editorCursor.foreground': focusColor,
-		focusBorder: focusColor,
+		'editorCursor.background': chromatism.contrastRatio(focusColor).hex,
+		'terminalCursor.foreground': focusColor,
+		'terminalCursor.background': chromatism.contrastRatio(focusColor).hex,
+
+		'panelTitle.activeBorder': focusColor,
 
 		'editorBracketMatch.border': shade(-20, focusColor),
 		'editorOverviewRuler.bracketMatchForeground': focusColor,
 		'editorBracketMatch.background': `${focusColor}20`,
+		'editorIndentGuide.background': shade(10, bg),
 		'editorIndentGuide.activeBackground': focusColor,
 		'activityBar.activeBorder': focusColor,
 		'activityBar.dropBorder': focusColor,
@@ -89,40 +183,30 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'tab.activeBorder': focusColor,
 		'editor.selectionBackground': `${focusColor}30`,
 
-		'progressBar.background': focusColor,
-
-		'list.activeSelectionBackground': `${focusColor}20`,
-		'list.inactiveSelectionBackground': `${focusColor}25`,
-		'list.focusBackground': `${focusColor}30`,
-		'list.hoverBackground': brightness(5, bg),
 		'editorWidget.background': bg,
 		'notifications.background': bg,
 
-		'dropdown.background': brightness(5, bg),
 		// ──────────────────────────────────────────────────────────────────────
-		'list.highlightForeground': letterHighlight,
 		'editorSuggestWidget.highlightForeground': letterHighlight,
 
-		'badge.background': badge,
 		'activityBarBadge.background': badge,
-		'badge.foreground': chromatism.contrastRatio(badge).hex,
 		'activityBarBadge.foreground': chromatism.contrastRatio(badge).hex,
 
-		'button.background': button,
-		'button.hoverBackground': shade(-20, button),
-		'button.foreground': chromatism.contrastRatio(button).hex,
-		'extensionButton.prominentBackground': button,
 		'extensionButton.prominentForeground': chromatism.contrastRatio(button).hex,
 		'extensionButton.prominentHoverBackground': shade(-20, button),
 	};
 	let tokenColors: TokenColors = [
-		// General
-		// {
-		// 	scope: 'invalid',
-		// 	settings: { foreground: '#ff5d5d' },
-		// },
-		// Reset template bug
 		{
+			name: 'Invalid - some grammar use it for showing obvious syntax errors.',
+			scope: [
+				'invalid',
+			],
+			settings: {
+				foreground: red,
+			},
+		},
+		{
+			name: 'Reset string interpolation (template literal) having the wrong color bug',
 			scope: [
 				'meta.embedded',
 				'source.groovy.embedded',
@@ -133,6 +217,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			},
 		},
 		{
+			name: 'Variables',
 			scope: [
 				'variable',
 				'support.variable.property.dom',
@@ -146,6 +231,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			},
 		},
 		{
+			name: 'Comments',
 			scope: [
 				'comment',
 				'punctuation.definition.comment',
@@ -155,6 +241,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			},
 		},
 		{
+			name: 'Strings',
 			scope: [
 				'string',
 				'punctuation.definition.string',
@@ -164,12 +251,11 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			},
 		},
 		{
+			name: 'Escape character (\n, \t ...)',
 			scope: [
 				'constant.character.escape',
 			],
 			settings: {
-				// foreground: chromatism.hue(70, c1).hex,
-				// foreground: chromatism.uniformComplementary(c1).hex,
 				foreground: c3,
 			},
 		},
@@ -387,14 +473,18 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			},
 		},
 		{
+			name: '[Markdown] link',
 			scope: [
+				'link',
 				'markup.underline.link',
+				'constant.other.reference.link.markdown',
 			],
 			settings: {
 				foreground: c4,
 			},
 		},
 		{
+			name: '[Markdown] blockquote text (>)',
 			scope: [
 				'markup.quote',
 			],
@@ -486,19 +576,11 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		},
 	];
 
-	// {
-	// 	scope: [
-	// 		'punctuation.terminator',
-	// 		// 'punctuation.separator.dictionary.pair.json',
-	// 		// 'punctuation.separator.comma',
-	// 	],
-	// 	settings: { foreground: chromatism.shade(-20, c.punctuation).hex },
-	// },
-
 	tokenColors = tokenColors.map(token => {
 		if (token.scope.length === 1) {
 			token.scope = token.scope[0];
 		}
+		delete token.name;
 		return token;
 	});
 

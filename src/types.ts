@@ -550,6 +550,7 @@ export type WorkbenchColors = Partial<{
 }>;
 
 export type TokenColors = {
+	name?: string;
 	scope: string | string[];
 	settings: {
 		foreground?: string;
