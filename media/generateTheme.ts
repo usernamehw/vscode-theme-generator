@@ -3,7 +3,12 @@ import sample from 'lodash/sample';
 import { TokenColors, WorkbenchColors } from '../src/types';
 import { brightness, shade } from './colorUtils';
 
-export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }) {
+export function generateTheme({
+	bg, fg,
+	c1, c2, c3, c4, c5, c6, c7,
+	inserted, modified, deleted,
+	error, warning, info,
+}) {
 	const colors = [c1, c2, c3, c4, c5, c6, c7];
 
 	const focusColor = sample(colors);
@@ -32,7 +37,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'widget.shadow': undefined,
 		'selection.background': `${focusColor}80`,
 		descriptionForeground: undefined,
-		errorForeground: red,
+		errorForeground: error,
 		'icon.foreground': undefined,
 
 		'window.activeBorder': undefined,
@@ -68,15 +73,15 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'inputOption.activeBackground': undefined,
 		'inputOption.activeBorder': undefined,
 		'inputOption.activeForeground': undefined,
-		'inputValidation.errorBackground': `${red}90`,
-		'inputValidation.errorBorder': red,
-		'inputValidation.errorForeground': chromatism.contrastRatio(red).hex,
-		'inputValidation.infoBackground': undefined,
-		'inputValidation.infoBorder': undefined,
-		'inputValidation.infoForeground': undefined,
-		'inputValidation.warningBackground': undefined,
-		'inputValidation.warningBorder': undefined,
-		'inputValidation.warningForeground': undefined,
+		'inputValidation.errorBackground': `${error}90`,
+		'inputValidation.errorBorder': error,
+		'inputValidation.errorForeground': chromatism.contrastRatio(error).hex,
+		'inputValidation.infoBackground': `${info}90`,
+		'inputValidation.infoBorder': info,
+		'inputValidation.infoForeground': chromatism.contrastRatio(info).hex,
+		'inputValidation.warningBackground': `${warning}90`,
+		'inputValidation.warningBorder': warning,
+		'inputValidation.warningForeground': chromatism.contrastRatio(warning).hex,
 
 		'scrollbar.shadow': undefined, // top editor shadow
 		'scrollbarSlider.background': `${shade(30, bg)}40`,
@@ -100,8 +105,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'list.inactiveSelectionForeground': undefined,
 		'list.inactiveFocusBackground': undefined,
 		'list.invalidItemForeground': undefined,
-		'list.errorForeground': red,
-		'list.warningForeground': undefined,
+		'list.errorForeground': error,
+		'list.warningForeground': warning,
 		'listFilterWidget.background': undefined,
 		'listFilterWidget.outline': undefined,
 		'listFilterWidget.noMatchesOutline': undefined,
@@ -132,8 +137,8 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 
 		'minimap.findMatchHighlight': undefined,
 		'minimap.selectionHighlight': undefined,
-		'minimap.errorHighlight': red,
-		'minimap.warningHighlight': undefined,
+		'minimap.errorHighlight': error,
+		'minimap.warningHighlight': warning,
 		'minimap.background': undefined,
 		'minimapSlider.background': undefined,
 		'minimapSlider.hoverBackground': undefined,
@@ -240,42 +245,42 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'editorOverviewRuler.selectionHighlightForeground': undefined,
 		'editorOverviewRuler.wordHighlightForeground': undefined,
 		'editorOverviewRuler.wordHighlightStrongForeground': undefined,
-		'editorOverviewRuler.modifiedForeground': undefined,
-		'editorOverviewRuler.addedForeground': undefined,
-		'editorOverviewRuler.deletedForeground': undefined,
-		'editorOverviewRuler.errorForeground': undefined,
-		'editorOverviewRuler.warningForeground': undefined,
-		'editorOverviewRuler.infoForeground': undefined,
+		'editorOverviewRuler.modifiedForeground': modified,
+		'editorOverviewRuler.addedForeground': modified,
+		'editorOverviewRuler.deletedForeground': modified,
+		'editorOverviewRuler.errorForeground': error,
+		'editorOverviewRuler.warningForeground': warning,
+		'editorOverviewRuler.infoForeground': info,
 		'editorOverviewRuler.bracketMatchForeground': bracketMatch,
 
-		'editorError.foreground': red,
+		'editorError.foreground': error,
 		'editorError.border': undefined,
 		'editorError.background': undefined,
 		'editorWarning.background': undefined,
 		'editorWarning.border': undefined,
-		'editorWarning.foreground': undefined,
+		'editorWarning.foreground': warning,
 		'editorInfo.background': undefined,
 		'editorInfo.border': undefined,
-		'editorInfo.foreground': undefined,
+		'editorInfo.foreground': info,
 		'editorHint.border': undefined,
 		'editorHint.foreground': undefined,
-		'problemsErrorIcon.foreground': red,
-		'problemsWarningIcon.foreground': undefined,
-		'problemsInfoIcon.foreground': undefined,
+		'problemsErrorIcon.foreground': error,
+		'problemsWarningIcon.foreground': warning,
+		'problemsInfoIcon.foreground': info,
 
 		'editorUnnecessaryCode.opacity': undefined, // #000000aa
 		'editorUnnecessaryCode.border': undefined,
 
 		'editorGutter.background': undefined,
-		'editorGutter.modifiedBackground': undefined,
-		'editorGutter.addedBackground': green,
-		'editorGutter.deletedBackground': red,
+		'editorGutter.modifiedBackground': modified,
+		'editorGutter.addedBackground': inserted,
+		'editorGutter.deletedBackground': deleted,
 		'editorGutter.commentRangeForeground': undefined,
 		'editorGutter.foldingControlForeground': undefined,
 
-		'diffEditor.insertedTextBackground': `${green}25`,
+		'diffEditor.insertedTextBackground': `${inserted}25`,
 		'diffEditor.insertedTextBorder': undefined,
-		'diffEditor.removedTextBackground': `${red}30`,
+		'diffEditor.removedTextBackground': `${deleted}30`,
 		'diffEditor.removedTextBorder': undefined,
 		'diffEditor.border': undefined,
 		'diffEditor.diagonalFill': undefined,
@@ -298,9 +303,9 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'debugExceptionWidget.border': undefined,
 
 		'editorMarkerNavigation.background': bg,
-		'editorMarkerNavigationError.background': red,
-		'editorMarkerNavigationWarning.background': undefined,
-		'editorMarkerNavigationInfo.background': undefined,
+		'editorMarkerNavigationError.background': error,
+		'editorMarkerNavigationWarning.background': warning,
+		'editorMarkerNavigationInfo.background': info,
 
 		'peekView.border': undefined,
 		'peekViewEditor.background': undefined,
@@ -383,9 +388,9 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 		'notificationToast.border': undefined,
 		'notifications.border': undefined,
 		'notifications.foreground': undefined,
-		'notificationsErrorIcon.foreground': undefined,
-		'notificationsInfoIcon.foreground': undefined,
-		'notificationsWarningIcon.foreground': undefined,
+		'notificationsErrorIcon.foreground': error,
+		'notificationsWarningIcon.foreground': warning,
+		'notificationsInfoIcon.foreground': info,
 		'notifications.background': bg,
 		'notificationLink.foreground': undefined,
 
@@ -447,9 +452,9 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 
 		'scm.providerBorder': undefined,
 
-		'gitDecoration.addedResourceForeground': green,
-		'gitDecoration.modifiedResourceForeground': undefined,
-		'gitDecoration.deletedResourceForeground': red,
+		'gitDecoration.addedResourceForeground': inserted,
+		'gitDecoration.modifiedResourceForeground': modified,
+		'gitDecoration.deletedResourceForeground': deleted,
 		'gitDecoration.ignoredResourceForeground': undefined,
 		'gitDecoration.conflictingResourceForeground': undefined,
 		'gitDecoration.stageDeletedResourceForeground': undefined,
@@ -530,7 +535,7 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 				'invalid',
 			],
 			settings: {
-				foreground: red,
+				foreground: error,
 			},
 		},
 		{
@@ -902,6 +907,48 @@ export function generateTheme({ bg, fg, c1, c2, c3, c4, c5, c6, c7, red, green }
 			],
 			settings: {
 				foreground: c2,
+			},
+		},
+		// Diff
+		{
+			scope: [
+				'markup.inserted',
+			],
+			settings: {
+				foreground: inserted,
+			},
+		},
+		{
+			scope: [
+				'markup.changed',
+			],
+			settings: {
+				foreground: modified,
+			},
+		},
+		{
+			scope: [
+				'markup.deleted',
+			],
+			settings: {
+				foreground: deleted,
+			},
+		},
+		{
+			scope: [
+				'meta.diff.header',
+			],
+			settings: {
+				foreground: functionName,
+				fontStyle: 'italic',
+			},
+		},
+		{
+			scope: [
+				'meta.diff.range',
+			],
+			settings: {
+				foreground: escape,
 			},
 		},
 	];

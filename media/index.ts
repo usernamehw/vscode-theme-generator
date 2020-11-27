@@ -27,10 +27,20 @@ const $reset = document.getElementById('reset') as HTMLButtonElement;
 const $export = document.getElementById('export') as HTMLButtonElement;
 const $resetCustomizations = document.getElementById('resetCustomizations') as HTMLButtonElement;
 const $shuffleColors = document.getElementById('shuffleColors') as HTMLInputElement;
-const $green = document.getElementById('green') as HTMLInputElement;
-const $greenText = document.getElementById('greenText') as HTMLInputElement;
-const $red = document.getElementById('red') as HTMLInputElement;
-const $redText = document.getElementById('redText') as HTMLInputElement;
+
+const $inserted = document.getElementById('inserted') as HTMLInputElement;
+const $insertedText = document.getElementById('insertedText') as HTMLInputElement;
+const $modified = document.getElementById('modified') as HTMLInputElement;
+const $modifiedText = document.getElementById('modifiedText') as HTMLInputElement;
+const $deleted = document.getElementById('deleted') as HTMLInputElement;
+const $deletedText = document.getElementById('deletedText') as HTMLInputElement;
+
+const $error = document.getElementById('error') as HTMLInputElement;
+const $errorText = document.getElementById('errorText') as HTMLInputElement;
+const $warning = document.getElementById('warning') as HTMLInputElement;
+const $warningText = document.getElementById('warningText') as HTMLInputElement;
+const $info = document.getElementById('info') as HTMLInputElement;
+const $infoText = document.getElementById('infoText') as HTMLInputElement;
 
 let currentGeneratedTheme: Theme;
 
@@ -40,9 +50,10 @@ const saveState = debounce(() => {
 		value: state,
 	});
 }, 500);
-const defaultState: WebviewSavedState = Object.freeze({
+const defaultState: WebviewSavedState = {
 	fg: '#D9D9D9',
 	bg: '#2e2e2e',
+
 	c1: '#399EE6',
 	c2: '#F07171',
 	c3: '#78BD65',
@@ -50,10 +61,17 @@ const defaultState: WebviewSavedState = Object.freeze({
 	c5: '#FFCE6B',
 	c6: '#4cbf99',
 	c7: '#a470d8',
-	green: '#78BD65',
-	red: '#F07171',
+
+	inserted: '#78BD65',
+	modified: '#399EE6',
+	deleted: '#F07171',
+
+	error: '#F07171',
+	warning: '#EF7C2A',
+	info: '#399EE6',
+
 	shouldShuffle: true,
-});
+};
 // @ts-ignore
 let state: WebviewSavedState = {};
 
@@ -137,25 +155,67 @@ $color7Text.addEventListener('input', e => {
 	saveState();
 });
 
-$red.addEventListener('input', e => {
-	state.red = $red.value;
-	$redText.value = $red.value;
+$modified.addEventListener('input', e => {
+	state.modified = $modified.value;
+	$modifiedText.value = $modified.value;
 	saveState();
 });
-$green.addEventListener('input', e => {
-	state.green = $green.value;
-	$greenText.value = $green.value;
+$inserted.addEventListener('input', e => {
+	state.inserted = $inserted.value;
+	$insertedText.value = $inserted.value;
+	saveState();
+});
+$deleted.addEventListener('input', e => {
+	state.deleted = $deleted.value;
+	$deletedText.value = $deleted.value;
 	saveState();
 });
 
-$redText.addEventListener('input', e => {
-	state.red = $redText.value;
-	$red.value = $redText.value;
+$modifiedText.addEventListener('input', e => {
+	state.modified = $modifiedText.value;
+	$modified.value = $modifiedText.value;
 	saveState();
 });
-$greenText.addEventListener('input', e => {
-	state.green = $greenText.value;
-	$green.value = $greenText.value;
+$insertedText.addEventListener('input', e => {
+	state.inserted = $insertedText.value;
+	$inserted.value = $insertedText.value;
+	saveState();
+});
+$deletedText.addEventListener('input', e => {
+	state.deleted = $deletedText.value;
+	$deleted.value = $deletedText.value;
+	saveState();
+});
+
+$error.addEventListener('input', e => {
+	state.error = $error.value;
+	$errorText.value = $error.value;
+	saveState();
+});
+$warning.addEventListener('input', e => {
+	state.warning = $warning.value;
+	$warningText.value = $warning.value;
+	saveState();
+});
+$info.addEventListener('input', e => {
+	state.info = $info.value;
+	$infoText.value = $info.value;
+	saveState();
+});
+
+$errorText.addEventListener('input', e => {
+	state.error = $errorText.value;
+	$error.value = $errorText.value;
+	saveState();
+});
+$warningText.addEventListener('input', e => {
+	state.warning = $warningText.value;
+	$warning.value = $warningText.value;
+	saveState();
+});
+$infoText.addEventListener('input', e => {
+	state.info = $infoText.value;
+	$info.value = $infoText.value;
 	saveState();
 });
 
@@ -202,8 +262,12 @@ document.getElementById('generate').addEventListener('click', () => {
 		c5: $color5.value,
 		c6: $color6.value,
 		c7: $color7.value,
-		green: $green.value,
-		red: $red.value,
+		inserted: $inserted.value,
+		modified: $modified.value,
+		deleted: $deleted.value,
+		error: $error.value,
+		warning: $warning.value,
+		info: $info.value,
 	});
 	vscodeApi.postMessage({
 		type: 'generateTheme',
@@ -249,10 +313,19 @@ function updateAllElements() {
 	$color6.value = state.c6;
 	$color7.value = state.c7;
 
-	$green.value = state.green;
-	$red.value = state.red;
-	$greenText.value = state.green;
-	$redText.value = state.red;
+	$inserted.value = state.inserted;
+	$modified.value = state.modified;
+	$deleted.value = state.deleted;
+	$insertedText.value = state.inserted;
+	$modifiedText.value = state.modified;
+	$deletedText.value = state.deleted;
+
+	$error.value = state.error;
+	$warning.value = state.warning;
+	$info.value = state.info;
+	$errorText.value = state.error;
+	$warningText.value = state.warning;
+	$infoText.value = state.info;
 
 	$shuffleColors.checked = state.shouldShuffle;
 }

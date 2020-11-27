@@ -183,12 +183,29 @@ export class GenerateThemePanel {
 
 		<table>
 			<tr>
-				<td><input type="color" id="green"> <input type="text" id="greenText"></td>
-				<td>Success, diff inserted</td>
+				<td><input type="color" id="inserted"> <input type="text" id="insertedText"></td>
+				<td title="Diff inserted">Inserted</td>
 			</tr>
 			<tr>
-				<td><input type="color" id="red"> <input type="text" id="redText"></td>
-				<td>Error, diff removed</td>
+				<td><input type="color" id="modified"> <input type="text" id="modifiedText"></td>
+				<td title="Diff modified">Modified</td>
+			</tr>
+			<tr>
+				<td><input type="color" id="deleted"> <input type="text" id="deletedText"></td>
+				<td title="Diff deleted">Deleted</td>
+			</tr>
+
+			<tr>
+				<td><input type="color" id="error"> <input type="text" id="errorText"></td>
+				<td>Error</td>
+			</tr>
+			<tr>
+				<td><input type="color" id="warning"> <input type="text" id="warningText"></td>
+				<td>Warning</td>
+			</tr>
+			<tr>
+				<td><input type="color" id="info"> <input type="text" id="infoText"></td>
+				<td>Info</td>
 			</tr>
 		</table>
 	</div>

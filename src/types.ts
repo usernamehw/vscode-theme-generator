@@ -26,6 +26,7 @@ export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveS
 export interface WebviewSavedState {
 	bg: string;
 	fg: string;
+
 	c1: string;
 	c2: string;
 	c3: string;
@@ -33,8 +34,15 @@ export interface WebviewSavedState {
 	c5: string;
 	c6: string;
 	c7: string;
-	green: string;
-	red: string;
+
+	inserted: string;
+	modified: string;
+	deleted: string;
+
+	error: string;
+	warning: string;
+	info: string;
+
 	shouldShuffle: boolean;
 }
 
