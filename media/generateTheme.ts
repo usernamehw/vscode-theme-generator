@@ -143,9 +143,9 @@ export function generateTheme({
 		'minimapSlider.background': undefined,
 		'minimapSlider.hoverBackground': undefined,
 		'minimapSlider.activeBackground': undefined,
-		'minimapGutter.addedBackground': undefined,
-		'minimapGutter.deletedBackground': undefined,
-		'minimapGutter.modifiedBackground': undefined,
+		'minimapGutter.addedBackground': inserted,
+		'minimapGutter.deletedBackground': deleted,
+		'minimapGutter.modifiedBackground': modified,
 
 		'editorGroup.border': shade(-5, bg),
 		'editorGroup.dropBackground': `${focusColor}30`,
