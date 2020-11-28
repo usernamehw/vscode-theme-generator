@@ -51,10 +51,10 @@ input[type='text'] {
 	background-color: var(--vscode-input-background);
 	border: 1px solid var(--vscode-input-border);
 	color: var(--vscode-input-foreground);
-	font-family: var(--vscode-font-family);
+	font-family: var(--vscode-editor-font-family);
 	outline: none;
 	padding: 0.1rem 0.2rem;
-	width: 5rem;
+	width: 9ch;
 }
 
 table {
