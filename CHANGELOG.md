@@ -1,3 +1,8 @@
+## 0.0.4 `28 Nov 2020`
+
+- ✨ Separate diagnostic (error) colors and diff colors
+- 🆗 Various tweaks
+
 ## 0.0.3 `27 Nov 2020`
 
 - 🆗 Various tweaks
