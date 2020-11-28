@@ -33,6 +33,7 @@ export function generateTheme({
 	const inputBg = shade(5, bg);
 	const inputBorder = shade(4, inputBg);
 	const windowTitleBg = shade(5, bg);
+	const shadow = brightness(-10, bg);
 
 	const workbenchColors: WorkbenchColors = {
 		contrastActiveBorder: undefined,
@@ -40,7 +41,7 @@ export function generateTheme({
 
 		focusBorder: focusColor,
 		foreground: fg,
-		'widget.shadow': undefined,
+		'widget.shadow': shadow,
 		'selection.background': `${selection}80`,
 		descriptionForeground: undefined,
 		errorForeground: error,
@@ -52,8 +53,8 @@ export function generateTheme({
 		'textBlockQuote.background': undefined,
 		'textBlockQuote.border': undefined,
 		'textCodeBlock.background': undefined,
-		'textLink.foreground': undefined,
-		'textLink.activeForeground': undefined,
+		'textLink.foreground': c3,
+		'textLink.activeForeground': c4,
 		'textPreformat.foreground': markdownCode,
 		'textSeparator.foreground': shade(-10, bg),
 
@@ -89,7 +90,7 @@ export function generateTheme({
 		'inputValidation.warningBorder': warning,
 		'inputValidation.warningForeground': contrastColor(warning),
 
-		'scrollbar.shadow': undefined, // top editor shadow
+		'scrollbar.shadow': shadow, // top editor shadow
 		'scrollbarSlider.background': `${shade(30, bg)}50`,
 		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
 		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,
@@ -137,7 +138,7 @@ export function generateTheme({
 		'sideBar.border': undefined,
 		'sideBar.dropBackground': undefined,
 		'sideBarTitle.foreground': undefined,
-		'sideBarSectionHeader.background': shade(-10, bg),
+		'sideBarSectionHeader.background': shade(5, sidebarBg),
 		'sideBarSectionHeader.foreground': undefined,
 		'sideBarSectionHeader.border': undefined,
 
@@ -223,7 +224,7 @@ export function generateTheme({
 		'editor.lineHighlightBackground': shade(5, bg),
 		'editor.lineHighlightBorder': undefined,
 
-		'editorLink.activeForeground': undefined,
+		'editorLink.activeForeground': focusColor,
 
 		'editor.rangeHighlightBackground': undefined,
 		'editor.rangeHighlightBorder': undefined,
