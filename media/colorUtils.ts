@@ -14,3 +14,6 @@ export function brightness(n: number, color: chromatism.ColourModes.Any): string
 	}
 	return tryIt.hex;
 }
+export function contrastColor(color: chromatism.ColourModes.Any): string {
+	return chromatism.contrastRatio(color).hex;
+}

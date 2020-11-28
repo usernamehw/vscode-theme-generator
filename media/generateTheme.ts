@@ -1,7 +1,6 @@
-import * as chromatism from 'chromatism';
 import sample from 'lodash/sample';
 import { TokenColors, WorkbenchColors } from '../src/types';
-import { brightness, shade } from './colorUtils';
+import { brightness, contrastColor, shade } from './colorUtils';
 
 export function generateTheme({
 	bg, fg,
@@ -26,8 +25,14 @@ export function generateTheme({
 	const functionName = c4;
 	const foldBackground = c4;
 
-	const punctuation = chromatism.shade(-35, fg).hex;
-	const comment = chromatism.shade(45, bg).hex;
+	const punctuation = shade(-35, fg);
+	const comment = shade(40, bg);
+	const sidebarBg = shade(-2.5, bg);
+	const activitybarBg = shade(-5, bg);
+	const statusbarBg = activitybarBg;
+	const inputBg = shade(5, bg);
+	const inputBorder = shade(4, inputBg);
+	const windowTitleBg = shade(5, bg);
 
 	const workbenchColors: WorkbenchColors = {
 		contrastActiveBorder: undefined,
@@ -53,7 +58,7 @@ export function generateTheme({
 		'textSeparator.foreground': shade(-10, bg),
 
 		'button.background': button,
-		'button.foreground': chromatism.contrastRatio(button).hex,
+		'button.foreground': contrastColor(button),
 		'button.hoverBackground': shade(-20, button),
 		'button.secondaryBackground': undefined,
 		'button.secondaryForeground': undefined,
@@ -62,13 +67,13 @@ export function generateTheme({
 		'checkbox.foreground': undefined,
 		'checkbox.border': undefined,
 
-		'dropdown.background': brightness(5, bg),
+		'dropdown.background': inputBg,
 		'dropdown.listBackground': undefined,
 		'dropdown.foreground': undefined,
-		'dropdown.border': undefined,
+		'dropdown.border': inputBorder,
 
-		'input.background': shade(-10, bg),
-		'input.border': undefined,
+		'input.background': inputBg,
+		'input.border': inputBorder,
 		'input.foreground': undefined,
 		'input.placeholderForeground': undefined,
 		'inputOption.activeBackground': undefined,
@@ -76,21 +81,21 @@ export function generateTheme({
 		'inputOption.activeForeground': undefined,
 		'inputValidation.errorBackground': `${error}90`,
 		'inputValidation.errorBorder': error,
-		'inputValidation.errorForeground': chromatism.contrastRatio(error).hex,
+		'inputValidation.errorForeground': contrastColor(error),
 		'inputValidation.infoBackground': `${info}90`,
 		'inputValidation.infoBorder': info,
-		'inputValidation.infoForeground': chromatism.contrastRatio(info).hex,
+		'inputValidation.infoForeground': contrastColor(info),
 		'inputValidation.warningBackground': `${warning}90`,
 		'inputValidation.warningBorder': warning,
-		'inputValidation.warningForeground': chromatism.contrastRatio(warning).hex,
+		'inputValidation.warningForeground': contrastColor(warning),
 
 		'scrollbar.shadow': undefined, // top editor shadow
-		'scrollbarSlider.background': `${shade(30, bg)}40`,
+		'scrollbarSlider.background': `${shade(30, bg)}50`,
 		'scrollbarSlider.hoverBackground': `${shade(40, bg)}40`,
 		'scrollbarSlider.activeBackground': `${shade(20, bg)}40`,
 
 		'badge.background': badge,
-		'badge.foreground': chromatism.contrastRatio(badge).hex,
+		'badge.foreground': contrastColor(badge),
 
 		'progressBar.background': focusColor,
 
@@ -116,18 +121,18 @@ export function generateTheme({
 		'tree.indentGuidesStroke': undefined,
 		'list.deemphasizedForeground': undefined,
 
-		'activityBar.background': shade(-10, bg),
+		'activityBar.background': activitybarBg,
 		'activityBar.foreground': undefined,
 		'activityBar.inactiveForeground': shade(-20, fg),
 		'activityBar.dropBorder': shade(20, bg),
 		'activityBar.border': undefined,
 		'activityBarBadge.background': badge,
-		'activityBarBadge.foreground': chromatism.contrastRatio(badge).hex,
+		'activityBarBadge.foreground': contrastColor(badge),
 		'activityBar.activeBorder': focusColor,
 		'activityBar.activeBackground': `${focusColor}13`,
 		'activityBar.activeFocusBorder': focusColor,
 
-		'sideBar.background': shade(-5, bg),
+		'sideBar.background': sidebarBg,
 		'sideBar.foreground': undefined,
 		'sideBar.border': undefined,
 		'sideBar.dropBackground': undefined,
@@ -140,7 +145,7 @@ export function generateTheme({
 		'minimap.selectionHighlight': `${selection}80`,
 		'minimap.errorHighlight': error,
 		'minimap.warningHighlight': warning,
-		'minimap.background': shade(-1, bg),
+		'minimap.background': undefined,
 		'minimapSlider.background': undefined,
 		'minimapSlider.hoverBackground': undefined,
 		'minimapSlider.activeBackground': undefined,
@@ -164,7 +169,7 @@ export function generateTheme({
 		'tab.unfocusedActiveBorder': undefined,
 		'tab.activeBorderTop': undefined,
 		'tab.unfocusedActiveBorderTop': undefined,
-		'tab.lastPinnedBorder': shade(-10, bg),
+		'tab.lastPinnedBorder': `${focusColor}50`,
 		'tab.inactiveBackground': shade(5, bg),
 		'tab.unfocusedInactiveBackground': undefined,
 		'tab.inactiveForeground': undefined,
@@ -188,7 +193,7 @@ export function generateTheme({
 		'editorLineNumber.foreground': brightness(20, bg),
 		'editorLineNumber.activeForeground': brightness(50, bg),
 
-		'editorCursor.background': chromatism.contrastRatio(focusColor).hex,
+		'editorCursor.background': contrastColor(focusColor),
 		'editorCursor.foreground': focusColor,
 
 		'editor.selectionBackground': `${selection}30`,
@@ -279,9 +284,9 @@ export function generateTheme({
 		'editorGutter.commentRangeForeground': undefined,
 		'editorGutter.foldingControlForeground': undefined,
 
-		'diffEditor.insertedTextBackground': `${inserted}25`,
+		'diffEditor.insertedTextBackground': `${inserted}30`,
 		'diffEditor.insertedTextBorder': undefined,
-		'diffEditor.removedTextBackground': `${deleted}30`,
+		'diffEditor.removedTextBackground': `${deleted}35`,
 		'diffEditor.removedTextBorder': undefined,
 		'diffEditor.border': undefined,
 		'diffEditor.diagonalFill': undefined,
@@ -349,7 +354,7 @@ export function generateTheme({
 
 		'imagePreview.border': undefined,
 
-		'statusBar.background': shade(-10, bg),
+		'statusBar.background': statusbarBg,
 		'statusBar.foreground': undefined,
 		'statusBar.border': undefined,
 		'statusBar.debuggingBackground': undefined,
@@ -361,24 +366,24 @@ export function generateTheme({
 		'statusBarItem.activeBackground': undefined,
 		'statusBarItem.hoverBackground': shade(-5, bg),
 		'statusBarItem.prominentBackground': focusColor,
-		'statusBarItem.prominentForeground': chromatism.contrastRatio(focusColor).hex,
+		'statusBarItem.prominentForeground': contrastColor(focusColor),
 		'statusBarItem.prominentHoverBackground': shade(-10, focusColor),
 		'statusBarItem.remoteBackground': undefined,
 		'statusBarItem.remoteForeground': undefined,
 
-		'titleBar.activeBackground': bg,
+		'titleBar.activeBackground': windowTitleBg,
 		'titleBar.activeForeground': undefined,
 		'titleBar.inactiveBackground': bg,
 		'titleBar.inactiveForeground': undefined,
-		'titleBar.border': undefined,
+		'titleBar.border': shade(2, windowTitleBg),
 
 		'menubar.selectionBackground': undefined,
 		'menubar.selectionBorder': undefined,
 		'menubar.selectionForeground': undefined,
 		'menu.background': bg,
 		'menu.foreground': fg,
-		'menu.selectionBackground': focusColor,
-		'menu.selectionForeground': chromatism.contrastRatio(focusColor).hex,
+		'menu.selectionBackground': `${focusColor}DD`,
+		'menu.selectionForeground': contrastColor(focusColor),
 		'menu.selectionBorder': undefined,
 		'menu.separatorBackground': shade(20, bg),
 		'menu.border': undefined,
@@ -396,7 +401,7 @@ export function generateTheme({
 		'notificationLink.foreground': undefined,
 
 		'extensionButton.prominentBackground': button,
-		'extensionButton.prominentForeground': chromatism.contrastRatio(button).hex,
+		'extensionButton.prominentForeground': contrastColor(button),
 		'extensionButton.prominentHoverBackground': shade(-20, button),
 		'extensionBadge.remoteBackground': undefined,
 		'extensionBadge.remoteForeground': undefined,
@@ -428,7 +433,7 @@ export function generateTheme({
 		'terminal.ansiYellow': undefined,
 		'terminal.selectionBackground': selection,
 		'terminalCursor.foreground': focusColor,
-		'terminalCursor.background': chromatism.contrastRatio(focusColor).hex,
+		'terminalCursor.background': contrastColor(focusColor),
 
 		'debugToolBar.background': undefined,
 		'debugToolBar.border': undefined,
@@ -459,7 +464,7 @@ export function generateTheme({
 		'gitDecoration.ignoredResourceForeground': undefined,
 		'gitDecoration.conflictingResourceForeground': undefined,
 		'gitDecoration.stageDeletedResourceForeground': undefined,
-		'gitDecoration.stageModifiedResourceForeground': undefined,
+		'gitDecoration.stageModifiedResourceForeground': modified,
 		'gitDecoration.submoduleResourceForeground': undefined,
 		'gitDecoration.untrackedResourceForeground': undefined,
 
@@ -470,7 +475,7 @@ export function generateTheme({
 		'settings.dropdownListBorder': undefined,
 		'settings.focusedRowBackground': undefined,
 		'settings.headerForeground': undefined,
-		'settings.modifiedItemIndicator': undefined,
+		'settings.modifiedItemIndicator': modified,
 		'settings.numberInputBackground': undefined,
 		'settings.numberInputForeground': undefined,
 		'settings.textInputBackground': undefined,
