@@ -36,11 +36,6 @@ export class GenerateThemePanel {
 			},
 		);
 
-		panel.webview.postMessage({
-			type: 'restoreState',
-			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
-		} as WebviewMessageToWebview);
-
 		GenerateThemePanel.currentPanel = new GenerateThemePanel(panel, extensionUri);
 	}
 
@@ -59,14 +54,14 @@ export class GenerateThemePanel {
 		this._panel.onDidChangeViewState(
 			e => {
 				if (this._panel.visible) {
-					this._restoreState();
+					GenerateThemePanel._restoreState(this._panel);
 				}
 			},
 			null,
 			this._disposables,
 		);
 
-		this._restoreState();
+		GenerateThemePanel._restoreState(this._panel);
 
 		// Handle messages from the webview
 		this._panel.webview.onDidReceiveMessage(
@@ -94,8 +89,8 @@ export class GenerateThemePanel {
 		);
 	}
 
-	private _restoreState() {
-		this._panel.webview.postMessage({
+	private static _restoreState(panel: vscode.WebviewPanel) {
+		panel.webview.postMessage({
 			type: 'restoreState',
 			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
 		} as WebviewMessageToWebview);
