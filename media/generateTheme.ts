@@ -176,9 +176,9 @@ export function generateTheme({
 		'tab.unfocusedHoverForeground': undefined,
 		'tab.hoverBorder': undefined,
 		'tab.unfocusedHoverBorder': undefined,
-		'tab.activeModifiedBorder': undefined,
+		'tab.activeModifiedBorder': modified,
 		'tab.inactiveModifiedBorder': undefined,
-		'tab.unfocusedActiveModifiedBorder': undefined,
+		'tab.unfocusedActiveModifiedBorder': brightness(-2, modified),
 		'tab.unfocusedInactiveModifiedBorder': undefined,
 		'editorPane.background': shade(-4, bg),
 
