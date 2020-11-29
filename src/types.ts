@@ -43,6 +43,8 @@ export interface WebviewSavedState {
 	warning: string;
 	info: string;
 
+	focus: string;
+
 	shouldShuffle: boolean;
 }
 

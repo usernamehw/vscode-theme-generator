@@ -7,10 +7,15 @@ export function generateTheme({
 	c1, c2, c3, c4, c5, c6, c7,
 	inserted, modified, deleted,
 	error, warning, info,
+	focus,
 }) {
+	focus = focus.toLowerCase();
+
 	const colors = [c1, c2, c3, c4, c5, c6, c7];
 
-	const focusColor = sample(colors);
+	const focusColor = focus === 'random' ?
+		sample(colors) :
+		focus;
 	const button = sample(colors);
 	const letterHighlight = sample(colors);
 	const badge = sample(colors);

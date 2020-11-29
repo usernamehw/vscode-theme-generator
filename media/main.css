@@ -57,6 +57,10 @@ input[type='text'] {
 	width: 9ch;
 }
 
+input[type='text']:focus {
+	border-color: var(--vscode-focusBorder);
+}
+
 table {
 	border-collapse: collapse;
 	margin: 0.5rem 0;
@@ -64,7 +68,7 @@ table {
 
 td {
 	border: 1px solid var(--vscode-editorOverviewRuler-border);
-	padding: 0.15rem 0.4rem;
+	padding: 0.15rem 0.35rem;
 }
 
 .generate-container {

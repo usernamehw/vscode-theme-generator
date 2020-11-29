@@ -42,6 +42,10 @@ const $warningText = document.getElementById('warningText') as HTMLInputElement;
 const $info = document.getElementById('info') as HTMLInputElement;
 const $infoText = document.getElementById('infoText') as HTMLInputElement;
 
+
+const $focus = document.getElementById('focus') as HTMLInputElement;
+const $focusText = document.getElementById('focusText') as HTMLInputElement;
+
 let currentGeneratedTheme: Theme;
 
 const saveState = debounce(() => {
@@ -69,6 +73,8 @@ const defaultState: WebviewSavedState = {
 	error: '#F07171',
 	warning: '#EF7C2A',
 	info: '#399EE6',
+
+	focus: 'random',
 
 	shouldShuffle: true,
 };
@@ -219,6 +225,19 @@ $infoText.addEventListener('input', e => {
 	saveState();
 });
 
+$focus.addEventListener('input', e => {
+	state.c1 = $focus.value;
+	$focusText.value = $focus.value;
+	saveState();
+});
+$focusText.addEventListener('input', e => {
+	state.focus = $focusText.value;
+	$focus.value = $focusText.value;
+	saveState();
+});
+
+
+// ──────────────────────────────────────────────────────────────────────
 $shuffleColors.addEventListener('change', e => {
 	state.shouldShuffle = (e.target as HTMLInputElement).checked;
 	saveState();
@@ -268,6 +287,7 @@ document.getElementById('generate').addEventListener('click', () => {
 		error: $error.value,
 		warning: $warning.value,
 		info: $info.value,
+		focus: state.focus,
 	});
 	vscodeApi.postMessage({
 		type: 'generateTheme',
@@ -326,6 +346,9 @@ function updateAllElements() {
 	$errorText.value = state.error;
 	$warningText.value = state.warning;
 	$infoText.value = state.info;
+
+	$focus.value = state.focus;
+	$focusText.value = state.focus;
 
 	$shuffleColors.checked = state.shouldShuffle;
 }

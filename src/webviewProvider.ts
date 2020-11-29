@@ -210,6 +210,12 @@ export class GenerateThemePanel {
 		<button id="export">Export as json</button>
 	</p>
 
+	<table>
+		<tr>
+			<td><input type="color" id="focus"> <input type="text" id="focusText"></td>
+			<td>Focus</td>
+		</tr>
+	</table>
 
 
 	<script defer nonce="${nonce}" src="${scriptUri}"></script>
