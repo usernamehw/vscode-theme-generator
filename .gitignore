@@ -11,5 +11,6 @@ media/webview.js
 media/webview.js.map
 media/webview.css
 media/contextMenu.css
+language-examples
 src/**/*.js
 **/*.js.map
