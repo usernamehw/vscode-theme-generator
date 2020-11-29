@@ -59,8 +59,8 @@ const defaultState: WebviewSavedState = {
 	c3: '#78BD65',
 	c4: '#EF7C2A',
 	c5: '#FFCE6B',
-	c6: '#4cbf99',
-	c7: '#a470d8',
+	c6: '#4CBF99',
+	c7: '#A470D8',
 
 	inserted: '#78BD65',
 	modified: '#399EE6',
