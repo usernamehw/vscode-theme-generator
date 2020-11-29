@@ -141,37 +141,37 @@ export class GenerateThemePanel {
 		<table>
 			<tr>
 				<td>1</td>
-				<td><label> <input type="color" id="color1Init"> <input type="text" id="color1InitText"></label></td>
+				<td><input type="color" id="color1Init"> <input type="text" id="color1InitText"></td>
 				<td>string <code>"text"</code></td>
 			</tr>
 			<tr>
 				<td>2</td>
-				<td><label><input type="color" id="color2Init"> <input type="text" id="color2InitText"></label></td>
+				<td><input type="color" id="color2Init"> <input type="text" id="color2InitText"></td>
 				<td>keyword <code>=</code></td>
 			</tr>
 			<tr>
 				<td>3</td>
-				<td><label><input type="color" id="color3Init"> <input type="text" id="color3InitText"></label></td>
+				<td><input type="color" id="color3Init"> <input type="text" id="color3InitText"></td>
 				<td>keyword.control <code>import</code></td>
 			</tr>
 			<tr>
 				<td>4</td>
-				<td><label><input type="color" id="color4Init"> <input type="text" id="color4InitText"></label></td>
+				<td><input type="color" id="color4Init"> <input type="text" id="color4InitText"></td>
 				<td>function name</td>
 			</tr>
 			<tr>
 				<td>5</td>
-				<td><label><input type="color" id="color5Init"> <input type="text" id="color5InitText"></label></td>
+				<td><input type="color" id="color5Init"> <input type="text" id="color5InitText"></td>
 				<td>function parameter</td>
 			</tr>
 			<tr>
 				<td>6</td>
-				<td><label><input type="color" id="color6Init"> <input type="text" id="color6InitText"></label></td>
+				<td><input type="color" id="color6Init"> <input type="text" id="color6InitText"></td>
 				<td>-</td>
 			</tr>
 			<tr>
 				<td>7</td>
-				<td><label><input type="color" id="color7Init"> <input type="text" id="color7InitText"></label></td>
+				<td><input type="color" id="color7Init"> <input type="text" id="color7InitText"></td>
 				<td>types</td>
 			</tr>
 		</table>
