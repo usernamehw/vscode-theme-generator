@@ -21,12 +21,16 @@ export function generateTheme({
 
 	const string = c1;
 	const escape = c3;
+	const keyword = c2;
+	const iniHeader = c4;
+	const constant = c7;
 	const thisKeyword = escape;
 	const functionName = c4;
 	const foldBackground = c4;
+	const variable = fg;
 
 	const punctuation = shade(-35, fg);
-	const comment = shade(40, bg);
+	const comment = shade(35, bg);
 	const sidebarBg = shade(-2.5, bg);
 	const activitybarBg = shade(-5, bg);
 	const statusbarBg = activitybarBg;
@@ -184,7 +188,7 @@ export function generateTheme({
 		'tab.unfocusedHoverBorder': undefined,
 		'tab.activeModifiedBorder': modified,
 		'tab.inactiveModifiedBorder': undefined,
-		'tab.unfocusedActiveModifiedBorder': brightness(-2, modified),
+		'tab.unfocusedActiveModifiedBorder': undefined,
 		'tab.unfocusedInactiveModifiedBorder': undefined,
 		'editorPane.background': shade(-4, bg),
 
@@ -295,7 +299,7 @@ export function generateTheme({
 		'editorWidget.background': bg,
 		'editorWidget.foreground': undefined,
 		'editorWidget.border': undefined,
-		'editorWidget.resizeBorder': shade(20, bg),
+		'editorWidget.resizeBorder': shade(10, bg),
 		'editorSuggestWidget.background': shade(5, bg),
 		'editorSuggestWidget.border': shade(10, bg),
 		'editorSuggestWidget.foreground': undefined,
@@ -304,7 +308,7 @@ export function generateTheme({
 
 		'editorHoverWidget.background': undefined,
 		'editorHoverWidget.foreground': undefined,
-		'editorHoverWidget.border': shade(-10, bg),
+		'editorHoverWidget.border': shade(10, bg),
 
 		'debugExceptionWidget.background': undefined,
 		'debugExceptionWidget.border': undefined,
@@ -567,7 +571,7 @@ export function generateTheme({
 				'string.interpolated.pug variable',
 			],
 			settings: {
-				foreground: fg,
+				foreground: variable,
 			},
 		},
 		{
@@ -605,7 +609,7 @@ export function generateTheme({
 				'constant.language.import-export-all', // JS/TS import asterisk
 			],
 			settings: {
-				foreground: c2,
+				foreground: keyword,
 			},
 		},
 		{
@@ -659,6 +663,14 @@ export function generateTheme({
 		},
 		{
 			scope: [
+				'constant',
+			],
+			settings: {
+				foreground: constant,
+			},
+		},
+		{
+			scope: [
 				'constant.numeric',
 				'constant.language',
 			],
@@ -686,7 +698,7 @@ export function generateTheme({
 				foreground: punctuation,
 			},
 		},
-		// JS
+		// JS ──────────────────────────────────────────────────────────────────────
 		{
 			scope: [
 				'comment.block.documentation entity.name.type',
@@ -704,7 +716,7 @@ export function generateTheme({
 				foreground: thisKeyword,
 			},
 		},
-		// HTML
+		// HTML ──────────────────────────────────────────────────────────────────────
 		{
 			scope: [
 				'meta.tag.metadata.doctype entity.name.tag',
@@ -759,7 +771,7 @@ export function generateTheme({
 				foreground: c5,
 			},
 		},
-		// Markdown/MD
+		// Markdown ──────────────────────────────────────────────────────────────────────
 		{
 			scope: [
 				'entity.name.section.markdown',
@@ -834,17 +846,19 @@ export function generateTheme({
 				foreground: c5,
 			},
 		},
-		// CSS
+		// CSS ──────────────────────────────────────────────────────────────────────
 		{
+			name: '[CSS] Tag and asterisk',
 			scope: [
 				'entity.name.tag.css',
-				'entity.name.tag.wildcard', // * asterisk in CSS
+				'entity.name.tag.wildcard',
 			],
 			settings: {
 				foreground: c1,
 			},
 		},
 		{
+			name: '[CSS] class (.class)',
 			scope: [
 				'entity.other.attribute-name.class',
 				'entity.other.attribute-name punctuation.definition.entity',
@@ -864,6 +878,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[CSS] id (#id)',
 			scope: [
 				'entity.other.attribute-name.id',
 				'entity.other.attribute-name.id punctuation.definition.entity',
@@ -900,6 +915,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[CSS] url',
 			scope: [
 				'variable.parameter.url',
 			],
@@ -907,7 +923,35 @@ export function generateTheme({
 				foreground: c5,
 			},
 		},
-		// JSON
+		// PHP ──────────────────────────────────────────────────────────────────────
+		{
+			scope: [
+				'punctuation.definition.variable',
+			],
+			settings: {
+				foreground: variable,
+			},
+		},
+		{
+			scope: [
+				'punctuation.section.embedded.begin.php',
+				'punctuation.section.embedded.end.php',
+			],
+			settings: {
+				foreground: keyword,
+			},
+		},
+		// Ini ──────────────────────────────────────────────────────────────────────
+		{
+			name: '[ini] Header',
+			scope: [
+				'entity.name.section',
+			],
+			settings: {
+				foreground: iniHeader,
+			},
+		},
+		// JSON ──────────────────────────────────────────────────────────────────────
 		{
 			scope: [
 				'support.type.property-name.json',
@@ -916,7 +960,7 @@ export function generateTheme({
 				foreground: c2,
 			},
 		},
-		// Diff
+		// Diff ──────────────────────────────────────────────────────────────────────
 		{
 			scope: [
 				'markup.inserted',
@@ -946,7 +990,7 @@ export function generateTheme({
 				'meta.diff.header',
 			],
 			settings: {
-				foreground: functionName,
+				foreground: modified,
 				fontStyle: 'italic',
 			},
 		},
