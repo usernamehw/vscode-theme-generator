@@ -6,7 +6,9 @@
 	],
 	"stylelint.config": {
 		"defaultSeverity": "warning",
-		"ignoreFiles": [],
+		"ignoreFiles": [
+			"./language-examples/**/*.*"
+		],
 		"plugins": [
 			"stylelint-csstree-validator",
 			"stylelint-declaration-block-no-ignored-properties",

@@ -22,6 +22,7 @@
 		"node_modules",
 		".vscode-test",
 		"media",
-		"scripts"
+		"scripts",
+		"language-examples"
 	]
 }
