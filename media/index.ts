@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce';
 import shuffle from 'lodash/shuffle';
-import { Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
+import { ExtensionConfig, Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
 import { generateTheme } from './generateTheme';
 
 /** @ts-ignore */
@@ -77,6 +77,9 @@ const defaultState: WebviewSavedState = {
 	focus: 'random',
 
 	shouldShuffle: true,
+};
+export let config: ExtensionConfig = {
+	tokenIncludeName: false,
 };
 // @ts-ignore
 let state: WebviewSavedState = {};
@@ -272,6 +275,7 @@ document.getElementById('generate').addEventListener('click', () => {
 		updateAllElements();
 	}
 	currentGeneratedTheme = generateTheme({
+		config,
 		bg: $background.value,
 		fg: $foreground.value,
 		c1: $color1.value,
@@ -363,6 +367,9 @@ window.addEventListener('message', event => {
 			};
 			updateAllElements();
 			break;
+		}
+		case 'updateConfig': {
+			config = message.value;
 		}
 	}
 });

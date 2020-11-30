@@ -64,8 +64,12 @@ interface RestoreState {
 	type: 'restoreState';
 	value: WebviewSavedState;
 }
+interface UpdateConfig {
+	type: 'updateConfig';
+	value: ExtensionConfig;
+}
 
-export type WebviewMessageToWebview = RestoreState;
+export type WebviewMessageToWebview = RestoreState | UpdateConfig;
 
 export type WorkbenchColors = Partial<{
 	'activityBarBadge.background': string;
@@ -567,3 +571,7 @@ export type TokenColors = {
 		fontStyle?: string;
 	};
 }[];
+
+export interface ExtensionConfig {
+	tokenIncludeName: boolean;
+}

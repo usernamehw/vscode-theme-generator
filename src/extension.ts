@@ -1,5 +1,5 @@
 import vscode, { ConfigurationTarget, workspace } from 'vscode';
-import { WebviewSavedState } from './types';
+import { ExtensionConfig, WebviewSavedState } from './types';
 import { GenerateThemePanel } from './webviewProvider';
 
 export const COLOR_THEME_SETTING_ID = 'workbench.colorTheme';
@@ -13,6 +13,10 @@ export const Global: { context: vscode.ExtensionContext } = {
 	context: {},
 };
 
+const EXTENSION_NAME = 'themeGenerator';
+
+export let extensionConfig = workspace.getConfiguration(EXTENSION_NAME) as any as ExtensionConfig;
+
 
 export function activate(context: vscode.ExtensionContext) {
 	Global.context = context;
@@ -25,10 +29,24 @@ export function activate(context: vscode.ExtensionContext) {
 		}),
 	);
 
+	function onConfigChange(e: vscode.ConfigurationChangeEvent): void {
+		if (!e.affectsConfiguration(EXTENSION_NAME)) {
+			return;
+		}
+		updateConfig();
+	}
+
+	function updateConfig(): void {
+		extensionConfig = workspace.getConfiguration(EXTENSION_NAME) as any as ExtensionConfig;
+		GenerateThemePanel.updateSettings(extensionConfig, GenerateThemePanel.currentPanel);
+	}
+
 
 	if (context.extensionMode === vscode.ExtensionMode.Development) {
 		vscode.commands.executeCommand('generateTheme');
 	}
+
+	context.subscriptions.push(workspace.onDidChangeConfiguration(onConfigChange));
 }
 
 export function saveWebviewState(state: WebviewSavedState) {

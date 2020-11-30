@@ -1,13 +1,21 @@
 import sample from 'lodash/sample';
-import { TokenColors, WorkbenchColors } from '../src/types';
+import { ExtensionConfig, TokenColors, WorkbenchColors } from '../src/types';
 import { brightness, contrastColor, shade } from './colorUtils';
 
 export function generateTheme({
+	config,
 	bg, fg,
 	c1, c2, c3, c4, c5, c6, c7,
 	inserted, modified, deleted,
 	error, warning, info,
 	focus,
+}: {
+	config: ExtensionConfig;
+	bg: string; fg: string;
+	c1: string; c2: string; c3: string; c4: string; c5: string; c6: string; c7: string;
+	inserted: string; modified: string; deleted: string;
+	error: string; warning: string; info: string;
+	focus: string;
 }) {
 	focus = focus.toLowerCase();
 
@@ -69,7 +77,7 @@ export function generateTheme({
 
 		'button.background': button,
 		'button.foreground': contrastColor(button),
-		'button.hoverBackground': shade(-20, button),
+		'button.hoverBackground': shade(-15, button),
 		'button.secondaryBackground': undefined,
 		'button.secondaryForeground': undefined,
 		'button.secondaryHoverBackground': undefined,
@@ -134,7 +142,7 @@ export function generateTheme({
 		'activityBar.background': activitybarBg,
 		'activityBar.foreground': undefined,
 		'activityBar.inactiveForeground': shade(-20, fg),
-		'activityBar.dropBorder': shade(20, bg),
+		'activityBar.dropBorder': focusColor,
 		'activityBar.border': undefined,
 		'activityBarBadge.background': badge,
 		'activityBarBadge.foreground': contrastColor(badge),
@@ -218,9 +226,9 @@ export function generateTheme({
 		'editor.wordHighlightStrongBorder': undefined,
 
 		'editor.findMatchBackground': undefined,
-		'editor.findMatchHighlightBackground': undefined,
+		'editor.findMatchHighlightBackground': `${fg}30`,
 		'editor.findRangeHighlightBackground': undefined,
-		'editor.findMatchBorder': undefined,
+		'editor.findMatchBorder': focusColor,
 		'editor.findMatchHighlightBorder': undefined,
 		'editor.findRangeHighlightBorder': undefined,
 
@@ -351,7 +359,7 @@ export function generateTheme({
 
 		'panel.background': undefined,
 		'panel.border': undefined,
-		'panel.dropBorder': undefined,
+		'panel.dropBorder': focusColor,
 		'panelTitle.activeBorder': focusColor,
 		'panelTitle.activeForeground': undefined,
 		'panelTitle.inactiveForeground': undefined,
@@ -1013,7 +1021,9 @@ export function generateTheme({
 		if (token.scope.length === 1) {
 			token.scope = token.scope[0];
 		}
-		delete token.name;
+		if (!config.tokenIncludeName) {
+			delete token.name;
+		}
 		return token;
 	});
 

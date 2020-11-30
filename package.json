@@ -35,7 +35,13 @@
 		"configuration": {
 			"type": "object",
 			"title": "Generate Theme",
-			"properties": {}
+			"properties": {
+				"themeGenerator.tokenIncludeName": {
+					"type": "boolean",
+					"description": "Generate token colors including `name` property describing the rule.",
+					"default": false
+				}
+			}
 		},
 		"commands": [
 			{
