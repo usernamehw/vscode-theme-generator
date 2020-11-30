@@ -246,6 +246,9 @@ $shuffleColors.addEventListener('change', e => {
 	saveState();
 });
 $export.addEventListener('click', e => {
+	if (!currentGeneratedTheme) {
+		currentGeneratedTheme = generateTheme(state, config);
+	}
 	vscodeApi.postMessage({
 		type: 'exportAsJson',
 		value: currentGeneratedTheme,
@@ -274,25 +277,7 @@ document.getElementById('generate').addEventListener('click', () => {
 		state.c7 = shuffledColors[indexes[6]];
 		updateAllElements();
 	}
-	currentGeneratedTheme = generateTheme({
-		config,
-		bg: $background.value,
-		fg: $foreground.value,
-		c1: $color1.value,
-		c2: $color2.value,
-		c3: $color3.value,
-		c4: $color4.value,
-		c5: $color5.value,
-		c6: $color6.value,
-		c7: $color7.value,
-		inserted: $inserted.value,
-		modified: $modified.value,
-		deleted: $deleted.value,
-		error: $error.value,
-		warning: $warning.value,
-		info: $info.value,
-		focus: state.focus,
-	});
+	currentGeneratedTheme = generateTheme(state, config);
 	vscodeApi.postMessage({
 		type: 'generateTheme',
 		value: currentGeneratedTheme,

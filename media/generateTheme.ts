@@ -3,20 +3,18 @@ import { ExtensionConfig, TokenColors, WorkbenchColors } from '../src/types';
 import { brightness, contrastColor, shade } from './colorUtils';
 
 export function generateTheme({
-	config,
 	bg, fg,
 	c1, c2, c3, c4, c5, c6, c7,
 	inserted, modified, deleted,
 	error, warning, info,
 	focus,
 }: {
-	config: ExtensionConfig;
 	bg: string; fg: string;
 	c1: string; c2: string; c3: string; c4: string; c5: string; c6: string; c7: string;
 	inserted: string; modified: string; deleted: string;
 	error: string; warning: string; info: string;
 	focus: string;
-}) {
+}, config: ExtensionConfig) {
 	focus = focus.toLowerCase();
 
 	const colors = [c1, c2, c3, c4, c5, c6, c7];
