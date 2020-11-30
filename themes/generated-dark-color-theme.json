@@ -1,7 +1,7 @@
 {
 	"name": "generated-dark",
 	"type": "dark",
-	"semanticHighlighting": true,
+	"semanticHighlighting": false,
 	"colors": {},
 	"tokenColors":[]
 }
