@@ -79,7 +79,7 @@ export function generateTheme({
 		'button.secondaryBackground': undefined,
 		'button.secondaryForeground': undefined,
 		'button.secondaryHoverBackground': undefined,
-		'checkbox.background': undefined,
+		'checkbox.background': inputBg,
 		'checkbox.foreground': undefined,
 		'checkbox.border': undefined,
 
@@ -665,6 +665,7 @@ export function generateTheme({
 				'punctuation.definition.typeparameters',
 				'keyword.operator.type',
 				'keyword.operator.optional',
+				'punctuation.definition.template-expression',
 				'source.tsx punctuation.section.embedded',
 				'source.jsx punctuation.section.embedded',
 			],
