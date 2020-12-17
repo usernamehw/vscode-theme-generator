@@ -1,3 +1,8 @@
+## 0.0.6 `17 Dec 2020`
+
+- ✨ Add option to use italic style
+- Open Settings GUI as split editor
+
 ## 0.0.5 `29 Nov 2020`
 
 - ✨ Add focus color

@@ -61,12 +61,6 @@
 				"label": "Generated Dark",
 				"path": "./themes/generated-dark-color-theme.json",
 				"uiTheme": "vs-dark"
-			},
-			{
-				"id": "generated-light",
-				"label": "Generated Light",
-				"path": "./themes/generated-light-color-theme.json",
-				"uiTheme": "vs"
 			}
 		]
 	},
