@@ -574,4 +574,5 @@ export type TokenColors = {
 
 export interface ExtensionConfig {
 	tokenIncludeName: boolean;
+	italic: boolean;
 }

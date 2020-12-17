@@ -36,9 +36,14 @@
 			"type": "object",
 			"title": "Generate Theme",
 			"properties": {
+				"themeGenerator.italic": {
+					"type": "boolean",
+					"markdownDescription": "Some tokens will have `italic` font style.",
+					"default": false
+				},
 				"themeGenerator.tokenIncludeName": {
 					"type": "boolean",
-					"description": "Generate token colors including `name` property describing the rule.",
+					"markdownDescription": "Generate token colors including `name` property describing the rule.",
 					"default": false
 				}
 			}

@@ -1016,6 +1016,23 @@ export function generateTheme({
 		},
 	];
 
+	if (config.italic) {
+		tokenColors.push({
+			scope: [
+				'keyword.control',
+				'quote',
+				'storage',
+				'this',
+				'comment',
+				'punctuation.definition.comment',
+				'modifier',
+			],
+			settings: {
+				fontStyle: 'italic',
+			},
+		});
+	}
+
 	tokenColors = tokenColors.map(token => {
 		if (token.scope.length === 1) {
 			token.scope = token.scope[0];
