@@ -2,7 +2,7 @@
 	"name": "theme-generator",
 	"displayName": "Theme Generator",
 	"description": "Try to generate a color theme.",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "usernamehw",
 	"license": "MIT",
 	"engines": {
