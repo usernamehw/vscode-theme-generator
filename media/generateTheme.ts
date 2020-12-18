@@ -638,6 +638,7 @@ export function generateTheme({
 		{
 			scope: [
 				'keyword.control',
+				'keyword.operator',
 				'storage',
 				// 'storage.type',
 				'support.type',
