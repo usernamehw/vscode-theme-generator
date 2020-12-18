@@ -61,6 +61,24 @@ input[type='text']:focus {
 	border-color: var(--vscode-focusBorder);
 }
 
+input[type='color'] {
+	appearance: none;
+	border: none;
+	height: 1.3em;
+	margin-right: 0.5ch;
+	outline: none;
+	padding: 0;
+	width: 1.3em;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+	border: 1px solid #111111;
+}
+
 table {
 	border-collapse: collapse;
 	margin: 0.5rem 0;
@@ -68,6 +86,12 @@ table {
 
 td {
 	border: 1px solid var(--vscode-editorOverviewRuler-border);
+}
+
+td > div {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
 	padding: 0.15rem 0.35rem;
 }
 
@@ -80,4 +104,5 @@ td {
 
 .row {
 	display: flex;
+	flex-wrap: wrap;
 }

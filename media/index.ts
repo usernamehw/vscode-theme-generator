@@ -3,6 +3,11 @@ import shuffle from 'lodash/shuffle';
 import { ExtensionConfig, Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
 import { generateTheme } from './generateTheme';
 
+const allTd = document.querySelectorAll('td');
+for (const td of Array.from(allTd)) {
+	td.innerHTML = `<div>${td.innerHTML}</div>`;
+}
+
 /** @ts-ignore */
 // eslint-disable-next-line no-undef
 const vscodeApi: VscodeWebviewApi = acquireVsCodeApi();
