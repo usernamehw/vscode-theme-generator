@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--one-space: 0.25em;
+}
+
 body,
 h1,
 h2,
@@ -95,6 +99,10 @@ td > div {
 	padding: 0.15rem 0.35rem;
 }
 
+td code {
+	margin-left: var(--one-space);
+}
+
 .generate-container {
 	background-color: var(--vscode-editor-background);
 	position: fixed;
@@ -105,4 +113,43 @@ td > div {
 .row {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.lock-container {
+	cursor: pointer;
+	display: block;
+	position: relative;
+	user-select: none;
+}
+
+.lock-container input {
+	cursor: pointer;
+	height: 0;
+	opacity: 0;
+	position: absolute;
+	width: 0;
+}
+
+.lock {
+	display: inline-block;
+	height: 1.4em;
+	left: 0;
+	margin-left: var(--one-space);
+	text-align: center;
+	top: 0;
+	width: 1.4em;
+}
+
+.lock-container input ~ .lock span {
+	opacity: 0.3;
+}
+
+.lock-container input:checked ~ .lock span,
+.lock-container input:hover ~ .lock span {
+	opacity: 1;
+}
+
+.lock-container input:checked ~ .lock {
+	background-color: var(--vscode-inputOption-activeBackground);
+	color: var(--vscode-inputOption-activeForeground);
 }

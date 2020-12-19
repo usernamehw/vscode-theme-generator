@@ -1,7 +1,6 @@
 import debounce from 'lodash/debounce';
-import shuffle from 'lodash/shuffle';
 import { ExtensionConfig, Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
-import { generateTheme } from './generateTheme';
+import { generateTheme, shuffleMainColors } from './generateTheme';
 
 const allTd = document.querySelectorAll('td');
 for (const td of Array.from(allTd)) {
@@ -28,6 +27,15 @@ const $color6 = document.getElementById('color6Init') as HTMLInputElement;
 const $color6Text = document.getElementById('color6InitText') as HTMLInputElement;
 const $color7 = document.getElementById('color7Init') as HTMLInputElement;
 const $color7Text = document.getElementById('color7InitText') as HTMLInputElement;
+
+const $c1Lock = document.getElementById('c1Lock') as HTMLInputElement;
+const $c2Lock = document.getElementById('c2Lock') as HTMLInputElement;
+const $c3Lock = document.getElementById('c3Lock') as HTMLInputElement;
+const $c4Lock = document.getElementById('c4Lock') as HTMLInputElement;
+const $c5Lock = document.getElementById('c5Lock') as HTMLInputElement;
+const $c6Lock = document.getElementById('c6Lock') as HTMLInputElement;
+const $c7Lock = document.getElementById('c7Lock') as HTMLInputElement;
+
 const $reset = document.getElementById('reset') as HTMLButtonElement;
 const $export = document.getElementById('export') as HTMLButtonElement;
 const $resetCustomizations = document.getElementById('resetCustomizations') as HTMLButtonElement;
@@ -71,6 +79,14 @@ const defaultState: WebviewSavedState = {
 	c6: '#4CBF99',
 	c7: '#A470D8',
 
+	c1Lock: false,
+	c2Lock: false,
+	c3Lock: false,
+	c4Lock: false,
+	c5Lock: false,
+	c6Lock: false,
+	c7Lock: false,
+
 	inserted: '#78BD65',
 	modified: '#399EE6',
 	deleted: '#F07171',
@@ -85,6 +101,7 @@ const defaultState: WebviewSavedState = {
 };
 export let config: ExtensionConfig = {
 	tokenIncludeName: false,
+	italic: false,
 };
 // @ts-ignore
 let state: WebviewSavedState = {};
@@ -244,6 +261,34 @@ $focusText.addEventListener('input', e => {
 	saveState();
 });
 
+$c1Lock.addEventListener('change', e => {
+	state.c1Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c2Lock.addEventListener('change', e => {
+	state.c2Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c3Lock.addEventListener('change', e => {
+	state.c3Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c4Lock.addEventListener('change', e => {
+	state.c4Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c5Lock.addEventListener('change', e => {
+	state.c5Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c6Lock.addEventListener('change', e => {
+	state.c6Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
+$c7Lock.addEventListener('change', e => {
+	state.c7Lock = (e.target as HTMLInputElement).checked;
+	saveState();
+});
 
 // ──────────────────────────────────────────────────────────────────────
 $shuffleColors.addEventListener('change', e => {
@@ -262,24 +307,14 @@ $export.addEventListener('click', e => {
 
 document.getElementById('generate').addEventListener('click', () => {
 	if (state.shouldShuffle) {
-		const colors = [state.c1, state.c2, state.c3, state.c4, state.c5, state.c6, state.c7];
-		const shuffledColors = shuffle(colors);
-		const indexes = [
-			shuffledColors.indexOf(state.c1),
-			shuffledColors.indexOf(state.c2),
-			shuffledColors.indexOf(state.c3),
-			shuffledColors.indexOf(state.c4),
-			shuffledColors.indexOf(state.c5),
-			shuffledColors.indexOf(state.c6),
-			shuffledColors.indexOf(state.c7),
-		].sort((a, b) => a - b);
-		state.c1 = shuffledColors[indexes[0]];
-		state.c2 = shuffledColors[indexes[1]];
-		state.c3 = shuffledColors[indexes[2]];
-		state.c4 = shuffledColors[indexes[3]];
-		state.c5 = shuffledColors[indexes[4]];
-		state.c6 = shuffledColors[indexes[5]];
-		state.c7 = shuffledColors[indexes[6]];
+		const shuffled = shuffleMainColors(state);
+		state.c1 = shuffled[0];
+		state.c2 = shuffled[1];
+		state.c3 = shuffled[2];
+		state.c4 = shuffled[3];
+		state.c5 = shuffled[4];
+		state.c6 = shuffled[5];
+		state.c7 = shuffled[6];
 		updateAllElements();
 	}
 	currentGeneratedTheme = generateTheme(state, config);
@@ -292,7 +327,7 @@ document.getElementById('generate').addEventListener('click', () => {
 export function showNotification(text: string) {
 	vscodeApi.postMessage({
 		type: 'showNotification',
-		value: text,
+		value: String(text),
 	});
 }
 
@@ -345,6 +380,14 @@ function updateAllElements() {
 	$focusText.value = state.focus;
 
 	$shuffleColors.checked = state.shouldShuffle;
+
+	$c1Lock.checked = state.c1Lock;
+	$c2Lock.checked = state.c2Lock;
+	$c3Lock.checked = state.c3Lock;
+	$c4Lock.checked = state.c4Lock;
+	$c5Lock.checked = state.c5Lock;
+	$c6Lock.checked = state.c6Lock;
+	$c7Lock.checked = state.c7Lock;
 }
 
 window.addEventListener('message', event => {

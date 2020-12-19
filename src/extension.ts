@@ -26,9 +26,11 @@ export function activate(context: vscode.ExtensionContext) {
 			const config = workspace.getConfiguration();
 			config.update(COLOR_THEME_SETTING_ID, 'generated-dark', ConfigurationTarget.Global);
 			GenerateThemePanel.createOrShow(context.extensionUri);
-			await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
-			await vscode.commands.executeCommand('workbench.action.moveEditorToBelowGroup');
-			await vscode.commands.executeCommand('workbench.action.openSettings', 'themeGenerator');
+			// if (context.extensionMode !== vscode.ExtensionMode.Development) {
+			// 	await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
+			// 	await vscode.commands.executeCommand('workbench.action.moveEditorToBelowGroup');
+			// 	await vscode.commands.executeCommand('workbench.action.openSettings', 'themeGenerator');
+			// }
 		}),
 	);
 

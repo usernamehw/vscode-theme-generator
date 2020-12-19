@@ -1,0 +1,150 @@
+<div class="generate-container">
+	<label><input type="checkbox" id="shuffleColors">Shuffle</label>
+	<button id="generate">▶ Generate</button>
+</div>
+
+<label><input type="color" id="backgroundInit"> Background</label>
+<label><input type="color" id="foregroundInit"> Foreground</label>
+
+<div class="row">
+	<table>
+		<tr>
+			<td>1</td>
+			<td>
+				<input type="color" id="color1Init">
+				<input type="text" id="color1InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c1Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>string <code>"text"</code></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>
+				<input type="color" id="color2Init">
+				<input type="text" id="color2InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c2Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>keyword <code>=</code></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>
+				<input type="color" id="color3Init">
+				<input type="text" id="color3InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c3Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>keyword.control <code>import</code></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>
+				<input type="color" id="color4Init">
+				<input type="text" id="color4InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c4Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>function name</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>
+				<input type="color" id="color5Init">
+				<input type="text" id="color5InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c5Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>function parameter</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>
+				<input type="color" id="color6Init">
+				<input type="text" id="color6InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c6Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>
+				<input type="color" id="color7Init">
+				<input type="text" id="color7InitText">
+				<label class="lock-container">
+					<input type="checkbox" id="c7Lock">
+					<span class="lock">
+						<span>🔒&#xFE0E;</span>
+					</span>
+				</label>
+			</td>
+			<td>types</td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td><input type="color" id="inserted"> <input type="text" id="insertedText"></td>
+			<td title="Diff inserted">Inserted</td>
+		</tr>
+		<tr>
+			<td><input type="color" id="modified"> <input type="text" id="modifiedText"></td>
+			<td title="Diff modified">Modified</td>
+		</tr>
+		<tr>
+			<td><input type="color" id="deleted"> <input type="text" id="deletedText"></td>
+			<td title="Diff deleted">Deleted</td>
+		</tr>
+
+		<tr>
+			<td><input type="color" id="error"> <input type="text" id="errorText"></td>
+			<td>Error</td>
+		</tr>
+		<tr>
+			<td><input type="color" id="warning"> <input type="text" id="warningText"></td>
+			<td>Warning</td>
+		</tr>
+		<tr>
+			<td><input type="color" id="info"> <input type="text" id="infoText"></td>
+			<td>Info</td>
+		</tr>
+	</table>
+</div>
+<p>
+	<button id="reset" title="Reset main color items to default values">Reset Color Inputs</button>
+	<button id="resetCustomizations" title="Reset items in User Global Settings (settings.json)">Reset Customizations</button>
+	<button id="export">Export as json</button>
+</p>
+
+<table>
+	<tr>
+		<td><input type="color" id="focus"> <input type="text" id="focusText"></td>
+		<td>Focus</td>
+	</tr>
+</table>

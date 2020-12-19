@@ -35,6 +35,14 @@ export interface WebviewSavedState {
 	c6: string;
 	c7: string;
 
+	c1Lock: boolean;
+	c2Lock: boolean;
+	c3Lock: boolean;
+	c4Lock: boolean;
+	c5Lock: boolean;
+	c6Lock: boolean;
+	c7Lock: boolean;
+
 	inserted: string;
 	modified: string;
 	deleted: string;

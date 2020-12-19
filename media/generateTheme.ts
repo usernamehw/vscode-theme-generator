@@ -1,4 +1,5 @@
 import sample from 'lodash/sample';
+import shuffle from 'lodash/shuffle';
 import { ExtensionConfig, TokenColors, WorkbenchColors } from '../src/types';
 import { brightness, contrastColor, shade } from './colorUtils';
 
@@ -257,7 +258,7 @@ export function generateTheme({
 		'editorLightBulb.foreground': undefined,
 		'editorLightBulbAutoFix.foreground': undefined,
 		'editorBracketMatch.border': shade(-20, bracketMatch),
-		'editorBracketMatch.background': `${bracketMatch}20`,
+		'editorBracketMatch.background': shade(-2, bg),
 		'editor.foldBackground': `${foldBackground}30`,
 
 		'editorOverviewRuler.background': undefined,
@@ -1048,4 +1049,55 @@ export function generateTheme({
 		workbenchColors,
 		tokenColors,
 	};
+}
+
+export function shuffleMainColors({
+	c1, c2, c3, c4, c5, c6, c7,
+	c1Lock, c2Lock, c3Lock, c4Lock, c5Lock, c6Lock, c7Lock,
+}) {
+	const colorTemp: string[] = [c1, c2, c3, c4, c5, c6, c7];
+	const result: string[] = [];
+	const indexesToShuffle: number[] = [];
+	if (!c1Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c1));
+	} else {
+		result[colorTemp.indexOf(c1)] = c1;
+	}
+	if (!c2Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c2));
+	} else {
+		result[colorTemp.indexOf(c2)] = c2;
+	}
+	if (!c3Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c3));
+	} else {
+		result[colorTemp.indexOf(c3)] = c3;
+	}
+	if (!c4Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c4));
+	} else {
+		result[colorTemp.indexOf(c4)] = c4;
+	}
+	if (!c5Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c5));
+	} else {
+		result[colorTemp.indexOf(c5)] = c5;
+	}
+	if (!c6Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c6));
+	} else {
+		result[colorTemp.indexOf(c6)] = c6;
+	}
+	if (!c7Lock) {
+		indexesToShuffle.push(colorTemp.indexOf(c7));
+	} else {
+		result[colorTemp.indexOf(c7)] = c7;
+	}
+
+	const shuffledIndexes = shuffle(indexesToShuffle);
+	for (let i = 0; i < shuffledIndexes.length; i++) {
+		const newIndex = shuffledIndexes[i];
+		result[indexesToShuffle[i]] = colorTemp[newIndex];
+	}
+	return result;
 }
