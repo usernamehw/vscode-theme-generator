@@ -2,6 +2,9 @@ import debounce from 'lodash/debounce';
 import { ExtensionConfig, Theme, VscodeWebviewApi, WebviewMessageToWebview, WebviewSavedState } from '../src/types';
 import { generateTheme, shuffleMainColors } from './generateTheme';
 
+const $mainColorsContainer = document.getElementById('mainColorsContainer');
+createMainColorsHtml();
+
 const allTd = document.querySelectorAll('td');
 for (const td of Array.from(allTd)) {
 	td.innerHTML = `<div>${td.innerHTML}</div>`;
@@ -13,20 +16,20 @@ const vscodeApi: VscodeWebviewApi = acquireVsCodeApi();
 
 const $background = document.getElementById('backgroundInit') as HTMLInputElement;
 const $foreground = document.getElementById('foregroundInit') as HTMLInputElement;
-const $color1 = document.getElementById('color1Init') as HTMLInputElement;
-const $color1Text = document.getElementById('color1InitText') as HTMLInputElement;
-const $color2 = document.getElementById('color2Init') as HTMLInputElement;
-const $color2Text = document.getElementById('color2InitText') as HTMLInputElement;
-const $color3 = document.getElementById('color3Init') as HTMLInputElement;
-const $color3Text = document.getElementById('color3InitText') as HTMLInputElement;
-const $color4 = document.getElementById('color4Init') as HTMLInputElement;
-const $color4Text = document.getElementById('color4InitText') as HTMLInputElement;
-const $color5 = document.getElementById('color5Init') as HTMLInputElement;
-const $color5Text = document.getElementById('color5InitText') as HTMLInputElement;
-const $color6 = document.getElementById('color6Init') as HTMLInputElement;
-const $color6Text = document.getElementById('color6InitText') as HTMLInputElement;
-const $color7 = document.getElementById('color7Init') as HTMLInputElement;
-const $color7Text = document.getElementById('color7InitText') as HTMLInputElement;
+const $color1 = document.getElementById('c1') as HTMLInputElement;
+const $color1Text = document.getElementById('c1Text') as HTMLInputElement;
+const $color2 = document.getElementById('c2') as HTMLInputElement;
+const $color2Text = document.getElementById('c2Text') as HTMLInputElement;
+const $color3 = document.getElementById('c3') as HTMLInputElement;
+const $color3Text = document.getElementById('c3Text') as HTMLInputElement;
+const $color4 = document.getElementById('c4') as HTMLInputElement;
+const $color4Text = document.getElementById('c4Text') as HTMLInputElement;
+const $color5 = document.getElementById('c5') as HTMLInputElement;
+const $color5Text = document.getElementById('c5Text') as HTMLInputElement;
+const $color6 = document.getElementById('c6') as HTMLInputElement;
+const $color6Text = document.getElementById('c6Text') as HTMLInputElement;
+const $color7 = document.getElementById('c7') as HTMLInputElement;
+const $color7Text = document.getElementById('c7Text') as HTMLInputElement;
 
 const $c1Lock = document.getElementById('c1Lock') as HTMLInputElement;
 const $c2Lock = document.getElementById('c2Lock') as HTMLInputElement;
@@ -390,6 +393,54 @@ function updateAllElements() {
 	$c7Lock.checked = state.c7Lock;
 }
 
+function createMainColorsHtml() {
+	const tdDescriptions = {
+		1: 'string <code>"text"</code>',
+		2: 'keyword <code>=</code>',
+		3: 'keyword.control <code>import</code>',
+		4: 'function name',
+		5: 'function parameter',
+		6: '-',
+		7: 'types',
+	};
+	for (let i = 1; i < 8; i++) {
+		const tr = document.createElement('tr');
+		const td1 = document.createElement('td');
+		const colorInput = document.createElement('input');
+		colorInput.type = 'color';
+		colorInput.id = `c${i}`;
+		const textInput = document.createElement('input');
+		textInput.type = 'text';
+		textInput.id = `c${i}Text`;
+		const label = document.createElement('label');
+		label.classList.add('lock-container');
+		const checkbox = document.createElement('input');
+		checkbox.type = 'checkbox';
+		checkbox.id = `c${i}Lock`;
+		const span = document.createElement('span');
+		span.classList.add('lock');
+		const innerSpan = document.createElement('span');
+		innerSpan.innerHTML = '🔒&#xFE0E;';
+
+		span.appendChild(innerSpan);
+
+		label.appendChild(checkbox);
+		label.appendChild(span);
+
+		td1.appendChild(colorInput);
+		td1.appendChild(textInput);
+		td1.appendChild(label);
+
+		const td2 = document.createElement('td');
+		td2.innerHTML = tdDescriptions[i];
+
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+
+		$mainColorsContainer.appendChild(tr);
+	}
+}
+
 window.addEventListener('message', event => {
 	const message: WebviewMessageToWebview = event.data; // The json data that the extension sent
 	switch (message.type) {
@@ -407,7 +458,7 @@ window.addEventListener('message', event => {
 	}
 });
 
-window.onerror = function(message, source, lineno, colno, error) {
+window.onerror = function(message) {
 	vscodeApi.postMessage({
 		type: 'showNotification',
 		value: `[WEBVIEW] ${message}`,
