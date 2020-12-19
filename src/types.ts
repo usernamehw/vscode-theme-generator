@@ -572,7 +572,7 @@ export type WorkbenchColors = Partial<{
 }>;
 
 export type TokenColors = {
-	name?: string;// TODO: every item should have a name
+	name: string;
 	scope: string | string[];
 	settings: {
 		foreground?: string;

@@ -576,6 +576,7 @@ export function generateTheme({
 			name: 'Variables',
 			scope: [
 				'variable',
+				'punctuation.definition.variable',
 				'support.variable.property.dom',
 				'support.variable.dom',
 				'support.variable.property',
@@ -616,6 +617,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Keyword',
 			scope: [
 				'keyword',
 				'constant.language.import-export-all', // JS/TS import asterisk
@@ -625,6 +627,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Types',
 			scope: [
 				'entity.name.type',
 				'support.type.primitive',
@@ -637,6 +640,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Keyword (import), operator (+-=)',
 			scope: [
 				'keyword.control',
 				'keyword.operator',
@@ -651,6 +655,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Function name, class name, new class expression.',
 			scope: [
 				'entity.name.function',
 				'support.class',
@@ -663,6 +668,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Punctuation, string template symbol, keyword type',
 			scope: [
 				'punctuation.definition.typeparameters',
 				'keyword.operator.type',
@@ -676,6 +682,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Constant',
 			scope: [
 				'constant',
 			],
@@ -684,6 +691,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Constant (numeric) (language, for instance, NaN, undefined, Infinity for JS/TS),',
 			scope: [
 				'constant.numeric',
 				'constant.language',
@@ -693,6 +701,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Function parameter',
 			scope: [
 				'variable.parameter', // normal languages
 				'parameter.variable', // Elixir
@@ -704,6 +713,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: 'Punctuation',
 			scope: [
 				'punctuation',
 				'meta.brace',
@@ -712,16 +722,8 @@ export function generateTheme({
 				foreground: punctuation,
 			},
 		},
-		// JS ──────────────────────────────────────────────────────────────────────
 		{
-			scope: [
-				'comment.block.documentation entity.name.type',
-			],
-			settings: {
-				foreground: c6,
-			},
-		},
-		{
+			name: 'this/self',
 			scope: [
 				'variable.language.this',
 				'variable.language.special.self',
@@ -730,8 +732,19 @@ export function generateTheme({
 				foreground: thisKeyword,
 			},
 		},
+		// JS ──────────────────────────────────────────────────────────────────────
+		{
+			name: '[JS] JSDoc type',
+			scope: [
+				'comment.block.documentation entity.name.type',
+			],
+			settings: {
+				foreground: c6,
+			},
+		},
 		// HTML ──────────────────────────────────────────────────────────────────────
 		{
+			name: '[HTML] Doctype tag',
 			scope: [
 				'meta.tag.metadata.doctype entity.name.tag',
 				'meta.tag.metadata.doctype punctuation.definition.tag',
@@ -744,6 +757,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[HTML] tag name',
 			scope: [
 				'entity.name.tag',
 			],
@@ -752,6 +766,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[HTML] String inside tag (attribute name)',
 			scope: [
 				'meta.tag string',
 			],
@@ -760,14 +775,7 @@ export function generateTheme({
 			},
 		},
 		{
-			scope: [
-				'meta.attribute punctuation.definition.string',
-			],
-			settings: {
-				foreground: punctuation,
-			},
-		},
-		{
+			name: '[HTML] tag attribute name',
 			scope: [
 				'meta.tag entity.other.attribute-name',
 				'entity.other.attribute-name.html',
@@ -777,6 +785,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[HTML] special entity ( &nbsp; &gt; )',
 			scope: [
 				'constant.character.entity',
 				'punctuation.definition.entity',
@@ -787,6 +796,7 @@ export function generateTheme({
 		},
 		// Markdown ──────────────────────────────────────────────────────────────────────
 		{
+			name: '[Markdown] Header',
 			scope: [
 				'entity.name.section.markdown',
 				'markup.heading.setext',
@@ -796,6 +806,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Markdown] List symbol (-, +, *, 1. ...)',
 			scope: [
 				'punctuation.definition.list',
 			],
@@ -804,6 +815,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Markdown] separator ---',
 			scope: [
 				'meta.separator.markdown',
 			],
@@ -812,6 +824,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Markdown] inline code `text`',
 			scope: [
 				'markup.inline.raw',
 			],
@@ -820,18 +833,21 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Markdown] bold text **bold**',
 			scope: 'markup.bold',
 			settings: {
 				fontStyle: 'bold',
 			},
 		},
 		{
+			name: '[Markdown] italic _italic_',
 			scope: 'markup.italic',
 			settings: {
 				fontStyle: 'italic',
 			},
 		},
 		{
+			name: '[Markdown] link description [description](...)',
 			scope: [
 				'meta.link punctuation.definition.string',
 				'meta.image punctuation.definition.string',
@@ -841,7 +857,7 @@ export function generateTheme({
 			},
 		},
 		{
-			name: '[Markdown] link',
+			name: '[Markdown] link itself [...](LINK)',
 			scope: [
 				'link',
 				'markup.underline.link',
@@ -882,6 +898,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[CSS] pseudo class/element :before :hover',
 			scope: [
 				'entity.other.attribute-name.pseudo-element',
 				'entity.other.attribute-name.pseudo-class',
@@ -902,14 +919,18 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[CSS] numbers',
 			scope: [
-				'source.css constant.numeric', // TODO: should scss/less be here?
+				'source.css constant.numeric',
+				'source.less constant.numeric',
+				'source.scss constant.numeric',
 			],
 			settings: {
 				foreground: c1,
 			},
 		},
 		{
+			name: '[CSS] property (background-color)',
 			scope: [
 				'meta.property-name',
 				'support.type.property-name',
@@ -919,6 +940,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Css] property value',
 			scope: [
 				'meta.property-value',
 				'meta.property-value constant.other',
@@ -939,14 +961,7 @@ export function generateTheme({
 		},
 		// PHP ──────────────────────────────────────────────────────────────────────
 		{
-			scope: [
-				'punctuation.definition.variable',
-			],
-			settings: {
-				foreground: variable,
-			},
-		},
-		{
+			name: '[PHP] php script symbols <?php ?>',
 			scope: [
 				'punctuation.section.embedded.begin.php',
 				'punctuation.section.embedded.end.php',
@@ -967,6 +982,7 @@ export function generateTheme({
 		},
 		// JSON ──────────────────────────────────────────────────────────────────────
 		{
+			name: '[JSON] property name',
 			scope: [
 				'support.type.property-name.json',
 			],
@@ -976,6 +992,7 @@ export function generateTheme({
 		},
 		// Diff ──────────────────────────────────────────────────────────────────────
 		{
+			name: '[Diff] Inserted',
 			scope: [
 				'markup.inserted',
 			],
@@ -984,6 +1001,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Diff] Modified',
 			scope: [
 				'markup.changed',
 			],
@@ -992,6 +1010,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Diff] Deleted',
 			scope: [
 				'markup.deleted',
 			],
@@ -1000,6 +1019,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Diff] Header',
 			scope: [
 				'meta.diff.header',
 			],
@@ -1009,6 +1029,7 @@ export function generateTheme({
 			},
 		},
 		{
+			name: '[Diff] Range',
 			scope: [
 				'meta.diff.range',
 			],
@@ -1020,6 +1041,7 @@ export function generateTheme({
 
 	if (config.italic) {
 		tokenColors.push({
+			name: 'Italicize',
 			scope: [
 				'keyword.control',
 				'quote',
