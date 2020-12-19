@@ -1059,39 +1059,39 @@ export function shuffleMainColors({
 	const result: string[] = [];
 	const indexesToShuffle: number[] = [];
 	if (!c1Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c1));
+		indexesToShuffle.push(0);
 	} else {
-		result[colorTemp.indexOf(c1)] = c1;
+		result[0] = c1;
 	}
 	if (!c2Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c2));
+		indexesToShuffle.push(1);
 	} else {
-		result[colorTemp.indexOf(c2)] = c2;
+		result[1] = c2;
 	}
 	if (!c3Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c3));
+		indexesToShuffle.push(2);
 	} else {
-		result[colorTemp.indexOf(c3)] = c3;
+		result[2] = c3;
 	}
 	if (!c4Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c4));
+		indexesToShuffle.push(3);
 	} else {
-		result[colorTemp.indexOf(c4)] = c4;
+		result[3] = c4;
 	}
 	if (!c5Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c5));
+		indexesToShuffle.push(4);
 	} else {
-		result[colorTemp.indexOf(c5)] = c5;
+		result[4] = c5;
 	}
 	if (!c6Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c6));
+		indexesToShuffle.push(5);
 	} else {
-		result[colorTemp.indexOf(c6)] = c6;
+		result[5] = c6;
 	}
 	if (!c7Lock) {
-		indexesToShuffle.push(colorTemp.indexOf(c7));
+		indexesToShuffle.push(6);
 	} else {
-		result[colorTemp.indexOf(c7)] = c7;
+		result[6] = c7;
 	}
 
 	const shuffledIndexes = shuffle(indexesToShuffle);
