@@ -742,6 +742,15 @@ export function generateTheme({
 				foreground: c6,
 			},
 		},
+		{
+			name: '[JS] super() call',
+			scope: [
+				'variable.language.super',
+			],
+			settings: {
+				foreground: functionName,
+			},
+		},
 		// HTML ──────────────────────────────────────────────────────────────────────
 		{
 			name: '[HTML] Doctype tag',
@@ -1025,7 +1034,6 @@ export function generateTheme({
 			],
 			settings: {
 				foreground: modified,
-				fontStyle: 'italic',
 			},
 		},
 		{
