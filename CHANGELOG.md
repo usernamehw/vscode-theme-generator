@@ -1,3 +1,7 @@
+## 0.0.7 `19 Dec 2020`
+
+- ✨ Create lock icon that prevens shuffling of a chosen color
+
 ## 0.0.6 `17 Dec 2020`
 
 - ✨ Add option to use italic style
