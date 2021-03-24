@@ -6,7 +6,7 @@
 	"publisher": "usernamehw",
 	"license": "MIT",
 	"engines": {
-		"vscode": "^1.51.0"
+		"vscode": "^1.54.0"
 	},
 	"repository": {
 		"type": "git",
@@ -72,40 +72,39 @@
 		"watch": "concurrently \"npm run watchExtension\" \"npm run watchWebview\""
 	},
 	"browserslist": [
-		"electron 9.3"
+		"chrome 87"
 	],
 	"devDependencies": {
-		"@types/chai": "^4.2.14",
+		"@types/chai": "^4.2.15",
 		"@types/glob": "^7.1.3",
-		"@types/lodash": "^4.14.165",
-		"@types/mocha": "^8.2.0",
-		"@types/node": "^12.12.69",
-		"@types/vscode": "^1.51.0",
-		"@typescript-eslint/eslint-plugin": "^4.10.0",
-		"@typescript-eslint/parser": "^4.10.0",
-		"chai": "^4.2.0",
+		"@types/lodash": "^4.14.168",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "^12.20.6",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^4.19.0",
+		"@typescript-eslint/parser": "^4.19.0",
+		"chai": "^4.3.4",
 		"concurrently": "^5.3.0",
-		"eslint": "^7.15.0",
+		"eslint": "^7.22.0",
 		"eslint-plugin-no-autofix": "^1.0.2",
 		"friendly-errors-webpack-plugin": "^1.7.0",
 		"glob": "^7.1.6",
-		"mocha": "^8.2.1",
+		"mocha": "^8.3.2",
 		"source-map-support": "^0.5.19",
-		"stylelint": "^13.8.0",
+		"stylelint": "^13.12.0",
 		"stylelint-csstree-validator": "^1.9.0",
 		"stylelint-declaration-block-no-ignored-properties": "^2.3.0",
 		"stylelint-declaration-use-variable": "^1.7.2",
-		"stylelint-images": "^2.0.1",
 		"stylelint-no-unsupported-browser-features": "^4.1.4",
 		"stylelint-order": "^4.1.0",
-		"ts-loader": "^8.0.12",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.4.1",
-		"webpack": "^5.10.3",
-		"webpack-cli": "^4.2.0"
+		"ts-loader": "^8.0.18",
+		"typescript": "^4.2.3",
+		"vscode-test": "^1.5.1",
+		"webpack": "^5.28.0",
+		"webpack-cli": "^4.5.0"
 	},
 	"dependencies": {
 		"chromatism": "^3.0.0",
-		"lodash": "^4.17.20"
+		"lodash": "^4.17.21"
 	}
 }
