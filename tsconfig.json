@@ -12,6 +12,9 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"removeComments": true,
+		"importHelpers": true,
 		"types": [
 			"node",
 			"mocha",
