@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 	Global.context = context;
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('generateTheme', async () => {
+		vscode.commands.registerCommand('themeGenerator.generateTheme', async () => {
 			const config = workspace.getConfiguration();
 			config.update(COLOR_THEME_SETTING_ID, 'generated-dark', ConfigurationTarget.Global);
 			GenerateThemePanel.createOrShow(context.extensionUri);
@@ -48,7 +48,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 	if (context.extensionMode === vscode.ExtensionMode.Development) {
-		vscode.commands.executeCommand('generateTheme');
+		vscode.commands.executeCommand('themeGenerator.generateTheme');
 	}
 
 	context.subscriptions.push(workspace.onDidChangeConfiguration(onConfigChange));

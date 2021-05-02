@@ -51,7 +51,7 @@
 		},
 		"commands": [
 			{
-				"command": "generateTheme",
+				"command": "themeGenerator.generateTheme",
 				"title": "Generate a theme",
 				"category": "Theme Generator"
 			}
