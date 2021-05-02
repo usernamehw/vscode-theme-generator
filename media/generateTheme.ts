@@ -41,7 +41,7 @@ export function generateTheme({
 	const foldBackground = c4;
 	const variable = fg;
 
-	const punctuation = shade(-35, fg);
+	const punctuation = shade(-25, fg);
 	const comment = shade(35, bg);
 	const sidebarBg = shade(-2.5, bg);
 	const activitybarBg = shade(-5, bg);

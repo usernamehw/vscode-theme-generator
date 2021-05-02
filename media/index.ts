@@ -71,7 +71,7 @@ const saveState = debounce(() => {
 	});
 }, 500);
 const defaultState: WebviewSavedState = {
-	fg: '#D9D9D9',
+	fg: '#e6e6e6',
 	bg: '#2e2e2e',
 
 	c1: '#399EE6',
