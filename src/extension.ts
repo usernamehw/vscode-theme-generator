@@ -46,11 +46,6 @@ export function activate(context: vscode.ExtensionContext) {
 		GenerateThemePanel.updateSettings(extensionConfig, GenerateThemePanel.currentPanel);
 	}
 
-
-	if (context.extensionMode === vscode.ExtensionMode.Development) {
-		vscode.commands.executeCommand('themeGenerator.generateTheme');
-	}
-
 	context.subscriptions.push(workspace.onDidChangeConfiguration(onConfigChange));
 }
 

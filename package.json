@@ -27,7 +27,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:generateTheme",
+		"onCommand:themeGenerator.generateTheme",
 		"onWebviewPanel:themeGenerator"
 	],
 	"main": "./dist/extension",
