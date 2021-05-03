@@ -1,6 +1,6 @@
 import fs from 'fs';
 import vscode from 'vscode';
-import { extensionConfig, Global, saveWebviewState, WEBVIEW_STATE_STORAGE_KEY } from './extension';
+import { Constants, extensionConfig, Global, saveWebviewState } from './extension';
 import { exportAsJson } from './saveTheme';
 import { ExtensionConfig, WebviewMessageFromWebview, WebviewMessageToWebview } from './types';
 import { updateGlobalCustomizationSettings } from './updateTheme';
@@ -103,7 +103,7 @@ export class GenerateThemePanel {
 	private static _restoreState(panel: vscode.WebviewPanel) {
 		panel.webview.postMessage({
 			type: 'restoreState',
-			value: Global.context.globalState.get(WEBVIEW_STATE_STORAGE_KEY),
+			value: Global.context.globalState.get(Constants.webviewStateStorageKey),
 		} as WebviewMessageToWebview);
 		GenerateThemePanel.updateSettings(extensionConfig, GenerateThemePanel.currentPanel);
 	}

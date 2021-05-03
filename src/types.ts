@@ -6,27 +6,27 @@ export interface Theme {
 	workbenchColors: WorkbenchColors;
 	tokenColors: TokenColors;
 }
-interface GenerateTheme {
+interface WebviewMessageGenerateTheme {
 	type: 'generateTheme';
 	value: Theme;
 }
-interface ResetCustomizations {
+interface WebviewMessageResetCustomizations {
 	type: 'resetCustomizations';
 }
-interface SaveState {
+interface WebviewMessageSaveState {
 	type: 'saveState';
 	value: WebviewSavedState;
 }
-interface ExportAsJson {
+interface WebviewMessageExportAsJson {
 	type: 'exportAsJson';
 	value: Theme;
 }
 
-export type WebviewMessageFromWebview = ShowNotification | GenerateTheme | SaveState | ResetCustomizations | ExportAsJson;
+export type WebviewMessageFromWebview = ShowNotification | WebviewMessageExportAsJson | WebviewMessageGenerateTheme | WebviewMessageResetCustomizations | WebviewMessageSaveState;
+
 export interface WebviewSavedState {
 	bg: string;
 	fg: string;
-
 	c1: string;
 	c2: string;
 	c3: string;
@@ -34,6 +34,13 @@ export interface WebviewSavedState {
 	c5: string;
 	c6: string;
 	c7: string;
+	inserted: string;
+	modified: string;
+	deleted: string;
+	error: string;
+	warning: string;
+	info: string;
+	focus: string;
 
 	c1Lock: boolean;
 	c2Lock: boolean;
@@ -42,16 +49,6 @@ export interface WebviewSavedState {
 	c5Lock: boolean;
 	c6Lock: boolean;
 	c7Lock: boolean;
-
-	inserted: string;
-	modified: string;
-	deleted: string;
-
-	error: string;
-	warning: string;
-	info: string;
-
-	focus: string;
 
 	shouldShuffle: boolean;
 }
@@ -573,7 +570,7 @@ export type WorkbenchColors = Partial<{
 
 export type TokenColors = {
 	name: string;
-	scope: string | string[];
+	scope: string[] | string;
 	settings: {
 		foreground?: string;
 		fontStyle?: string;

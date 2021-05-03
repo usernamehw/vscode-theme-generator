@@ -2,55 +2,52 @@ import vscode, { ConfigurationTarget, workspace } from 'vscode';
 import { ExtensionConfig, WebviewSavedState } from './types';
 import { GenerateThemePanel } from './webviewProvider';
 
-export const COLOR_THEME_SETTING_ID = 'workbench.colorTheme';
-export const COLOR_CUSTOMIZATIONS_SETTING_ID = 'workbench.colorCustomizations';
-export const TOKEN_CUSTOMIZATIONS_SETTING_ID = 'editor.tokenColorCustomizations';
-
-export const WEBVIEW_STATE_STORAGE_KEY = 'WEBVIEW_STATE_KEY';
-
 export const Global: { context: vscode.ExtensionContext } = {
 	// @ts-ignore
 	context: {},
 };
 
-const EXTENSION_NAME = 'themeGenerator';
+export const enum Constants {
+	extensionName = 'themeGenerator',
+	colorThemeSettingId = 'workbench.colorTheme',
+	colorCustomizationsSettingId = 'workbench.colorCustomizations',
+	tokenColorCustomizationsSettingId = 'editor.tokenColorCustomizations',
+	// ──────────────────────────────────────────────────────────────────────
+	webviewStateStorageKey = 'WEBVIEW_STATE',
+}
 
-export let extensionConfig = workspace.getConfiguration(EXTENSION_NAME) as any as ExtensionConfig;
+
+export let extensionConfig = workspace.getConfiguration(Constants.extensionName) as any as ExtensionConfig;
 
 
-export function activate(context: vscode.ExtensionContext) {
-	Global.context = context;
+export function activate(extensionContext: vscode.ExtensionContext) {
+	Global.context = extensionContext;
 
-	context.subscriptions.push(
-		vscode.commands.registerCommand('themeGenerator.generateTheme', async () => {
+	extensionContext.subscriptions.push(
+		vscode.commands.registerCommand('themeGenerator.generateTheme', () => {
 			const config = workspace.getConfiguration();
-			config.update(COLOR_THEME_SETTING_ID, 'generated-dark', ConfigurationTarget.Global);
-			GenerateThemePanel.createOrShow(context.extensionUri);
-			// if (context.extensionMode !== vscode.ExtensionMode.Development) {
-			// 	await vscode.commands.executeCommand('workbench.action.files.newUntitledFile');
-			// 	await vscode.commands.executeCommand('workbench.action.moveEditorToBelowGroup');
-			// 	await vscode.commands.executeCommand('workbench.action.openSettings', 'themeGenerator');
-			// }
+			config.update(Constants.colorThemeSettingId, 'generated-dark', ConfigurationTarget.Global);
+			GenerateThemePanel.createOrShow(extensionContext.extensionUri);
 		}),
 	);
 
 	function onConfigChange(e: vscode.ConfigurationChangeEvent): void {
-		if (!e.affectsConfiguration(EXTENSION_NAME)) {
+		if (!e.affectsConfiguration(Constants.extensionName)) {
 			return;
 		}
 		updateConfig();
 	}
 
 	function updateConfig(): void {
-		extensionConfig = workspace.getConfiguration(EXTENSION_NAME) as any as ExtensionConfig;
+		extensionConfig = workspace.getConfiguration(Constants.extensionName) as any as ExtensionConfig;
 		GenerateThemePanel.updateSettings(extensionConfig, GenerateThemePanel.currentPanel);
 	}
 
-	context.subscriptions.push(workspace.onDidChangeConfiguration(onConfigChange));
+	extensionContext.subscriptions.push(workspace.onDidChangeConfiguration(onConfigChange));
 }
 
 export function saveWebviewState(state: WebviewSavedState) {
-	Global.context.globalState.update(WEBVIEW_STATE_STORAGE_KEY, state);
+	Global.context.globalState.update(Constants.webviewStateStorageKey, state);
 }
 
 export function deactivate() {}

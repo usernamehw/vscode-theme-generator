@@ -1,5 +1,5 @@
 import { ConfigurationTarget, workspace } from 'vscode';
-import { COLOR_CUSTOMIZATIONS_SETTING_ID, TOKEN_CUSTOMIZATIONS_SETTING_ID } from './extension';
+import { Constants } from './extension';
 import { TokenColors, WorkbenchColors } from './types';
 /**
  * Update global settings to preview the theme changes.
@@ -7,13 +7,13 @@ import { TokenColors, WorkbenchColors } from './types';
 export function updateGlobalCustomizationSettings(colors: WorkbenchColors, textMateRules: TokenColors, themeName = 'generated-dark') {
 	const config = workspace.getConfiguration();
 
-	const colorCustomizations = config.inspect(COLOR_CUSTOMIZATIONS_SETTING_ID)?.globalValue as object;
+	const colorCustomizations = config.inspect(Constants.colorCustomizationsSettingId)?.globalValue as Record<string, unknown>;
 	const newColorCustomizations = {
 		...colorCustomizations,
 		[`[${themeName}]`]: colors,
 	};
 
-	const tokenCustomizations = config.inspect(TOKEN_CUSTOMIZATIONS_SETTING_ID)?.globalValue as object;
+	const tokenCustomizations = config.inspect(Constants.tokenColorCustomizationsSettingId)?.globalValue as Record<string, unknown>;
 	const newTokenCustomizations = {
 		...tokenCustomizations,
 		[`[${themeName}]`]: {
@@ -21,6 +21,6 @@ export function updateGlobalCustomizationSettings(colors: WorkbenchColors, textM
 		},
 	};
 
-	config.update(COLOR_CUSTOMIZATIONS_SETTING_ID, newColorCustomizations, ConfigurationTarget.Global);
-	config.update(TOKEN_CUSTOMIZATIONS_SETTING_ID, newTokenCustomizations, ConfigurationTarget.Global);
+	config.update(Constants.colorCustomizationsSettingId, newColorCustomizations, ConfigurationTarget.Global);
+	config.update(Constants.tokenColorCustomizationsSettingId, newTokenCustomizations, ConfigurationTarget.Global);
 }
