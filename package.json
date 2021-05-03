@@ -15,6 +15,7 @@
 	"bugs": {
 		"url": "https://github.com/usernamehw/vscode-theme-generator/issues"
 	},
+	"icon": "img/icon.png",
 	"qna": false,
 	"keywords": [
 		"generate",
