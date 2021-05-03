@@ -21,6 +21,7 @@ export class GenerateThemePanel {
 		const column = vscode.ViewColumn.Two;
 
 		if (GenerateThemePanel.currentPanel) {
+			GenerateThemePanel._restoreState(GenerateThemePanel.currentPanel._panel);
 			GenerateThemePanel.currentPanel._panel.reveal(column);
 			return;
 		}
