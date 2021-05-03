@@ -71,16 +71,16 @@ const saveState = debounce(() => {
 	});
 }, 500);
 const defaultState: WebviewSavedState = {
-	fg: '#e6e6e6',
-	bg: '#2e2e2e',
+	fg: '#E6E6E6',
+	bg: '#2E2E2E',
 
 	c1: '#399EE6',
 	c2: '#F07171',
 	c3: '#78BD65',
 	c4: '#FFCE6B',
-	c5: '#fa8d3e',
-	c6: '#4CBF99',
-	c7: '#A470D8',
+	c5: '#FA8D3E',
+	c6: '#C8B6FF',
+	c7: '#7DBFEF',
 
 	c1Lock: false,
 	c2Lock: false,
@@ -395,7 +395,7 @@ function updateAllElements() {
 
 function createMainColorsHtml() {
 	const tdDescriptions = {
-		1: 'string <code>"text"</code>',
+		1: 'string',
 		2: 'keyword <code>=</code>',
 		3: 'keyword.control <code>import</code>',
 		4: 'function name',
