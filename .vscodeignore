@@ -18,7 +18,7 @@ package-lock.json
 .gitattributes
 
 media/app
-img
+img/demo.gif
 
 node_modules
 LICENSE
