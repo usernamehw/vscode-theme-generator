@@ -12,4 +12,7 @@ Extension switches active color theme to `generated-dark` and writes colors into
 - `storage.type` be different from `keyword.control`
 - badges are bright
 - variables are colored
+
+https://coolors.co/palettes/trending
+https://highlightjs.org/static/demo/
 -->

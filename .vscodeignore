@@ -19,6 +19,7 @@ package-lock.json
 
 media/app
 img/demo.gif
+dist/extension.js.LICENSE.txt
 
 node_modules
 LICENSE

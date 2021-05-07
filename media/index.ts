@@ -262,6 +262,20 @@ $infoText.addEventListener('input', e => {
 	saveState();
 });
 
+const canReference: {
+	[key: string]: HTMLInputElement;
+} = {
+	bg: $background,
+	fg: $foreground,
+	c1: $color1,
+	c2: $color2,
+	c3: $color3,
+	c4: $color4,
+	c5: $color5,
+	c6: $color6,
+	c7: $color7,
+};
+
 $focus.addEventListener('input', e => {
 	state.c1 = $focus.value;
 	$focusText.value = $focus.value;
@@ -269,7 +283,7 @@ $focus.addEventListener('input', e => {
 });
 $focusText.addEventListener('input', e => {
 	state.focus = $focusText.value;
-	$focus.value = $focusText.value;
+	$focus.value = getReferencedColor($focusText.value);
 	saveState();
 });
 
@@ -358,6 +372,14 @@ $resetCustomizations.addEventListener('click', () => {
 	});
 });
 
+function getReferencedColor(color: string): string {
+	if (canReference[color]) {
+		return canReference[color].value;
+	} else {
+		return color;
+	}
+}
+
 function updateAllElements() {
 	$background.value = state.bg;
 	$foreground.value = state.fg;
@@ -392,7 +414,7 @@ function updateAllElements() {
 	$warningText.value = state.warning;
 	$infoText.value = state.info;
 
-	$focus.value = state.focus;
+	$focus.value = getReferencedColor(state.focus);
 	$focusText.value = state.focus;
 
 	$shuffleColors.checked = state.shouldShuffle;
@@ -419,6 +441,9 @@ function createMainColorsHtml() {
 	for (let i = 1; i < 8; i++) {
 		const tr = document.createElement('tr');
 		const td1 = document.createElement('td');
+		const orderNumber = document.createElement('span');
+		orderNumber.innerText = String(i);
+		orderNumber.classList.add('order-number');
 		const colorInput = document.createElement('input');
 		colorInput.type = 'color';
 		colorInput.id = `c${i}`;
@@ -441,6 +466,7 @@ function createMainColorsHtml() {
 		label.appendChild(checkbox);
 		label.appendChild(span);
 
+		td1.appendChild(orderNumber);
 		td1.appendChild(colorInput);
 		td1.appendChild(textInput);
 		td1.appendChild(label);

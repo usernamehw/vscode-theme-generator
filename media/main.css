@@ -115,6 +115,10 @@ td code {
 	top: 0.5rem;
 }
 
+.order-number {
+	margin-right: var(--one-space);
+}
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -137,12 +141,12 @@ td code {
 
 .lock {
 	display: inline-block;
-	height: 1.4em;
+	height: 1.5em;
 	left: 0;
 	margin-left: var(--one-space);
 	text-align: center;
 	top: 0;
-	width: 1.4em;
+	width: 1.5em;
 }
 
 .lock-container input ~ .lock span {
