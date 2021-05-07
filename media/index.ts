@@ -335,7 +335,11 @@ export function showNotification(text: string) {
 }
 
 $reset.addEventListener('click', () => {
-	state = { ...defaultState };
+	const oldShouldShuffleValue = state.shouldShuffle;
+	state = {
+		...defaultState,
+		shouldShuffle: oldShouldShuffleValue,
+	};
 	saveState();
 	updateAllElements();
 });
