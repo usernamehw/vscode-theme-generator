@@ -418,6 +418,7 @@ function createMainColorsHtml() {
 		textInput.id = `c${i}Text`;
 		const label = document.createElement('label');
 		label.classList.add('lock-container');
+		label.title = 'Lock color from randomly changing';
 		const checkbox = document.createElement('input');
 		checkbox.type = 'checkbox';
 		checkbox.id = `c${i}Lock`;
