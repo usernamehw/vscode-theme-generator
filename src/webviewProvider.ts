@@ -39,6 +39,7 @@ export class GenerateThemePanel {
 		);
 
 		GenerateThemePanel.currentPanel = new GenerateThemePanel(panel, extensionUri);
+		GenerateThemePanel._restoreState(GenerateThemePanel.currentPanel._panel);
 	}
 
 	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
