@@ -70,17 +70,26 @@ const saveState = debounce(() => {
 		value: state,
 	});
 }, 500);
+const enum DefaultColors {
+	blue = '#399EE6',
+	red = '#F07171',
+	green = '#78BD65',
+	yellow = '#FFCE6B',
+	orange = '#FA8D3E',
+	extra1 = '#C8B6FF',
+	extra2 = '#7DBFEF',
+}
 const defaultState: WebviewSavedState = {
 	fg: '#E6E6E6',
 	bg: '#2E2E2E',
 
-	c1: '#399EE6',
-	c2: '#F07171',
-	c3: '#78BD65',
-	c4: '#FFCE6B',
-	c5: '#FA8D3E',
-	c6: '#C8B6FF',
-	c7: '#7DBFEF',
+	c1: DefaultColors.blue,
+	c2: DefaultColors.red,
+	c3: DefaultColors.green,
+	c4: DefaultColors.yellow,
+	c5: DefaultColors.orange,
+	c6: DefaultColors.extra1,
+	c7: DefaultColors.extra2,
 
 	c1Lock: false,
 	c2Lock: false,
@@ -90,13 +99,13 @@ const defaultState: WebviewSavedState = {
 	c6Lock: false,
 	c7Lock: false,
 
-	inserted: '#78BD65',
-	modified: '#399EE6',
-	deleted: '#F07171',
+	inserted: DefaultColors.green,
+	modified: DefaultColors.blue,
+	deleted: DefaultColors.red,
 
-	error: '#F07171',
-	warning: '#EF7C2A',
-	info: '#399EE6',
+	error: DefaultColors.red,
+	warning: DefaultColors.orange,
+	info: DefaultColors.blue,
 
 	focus: 'random',
 
