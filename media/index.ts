@@ -81,7 +81,7 @@ const enum DefaultColors {
 }
 const defaultState: WebviewSavedState = {
 	fg: '#E6E6E6',
-	bg: '#2E2E2E',
+	bg: '#24292E',
 
 	c1: DefaultColors.blue,
 	c2: DefaultColors.red,
