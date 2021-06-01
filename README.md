@@ -4,7 +4,7 @@
 
 ### Commands
 
-- `generateTheme` **Generate a theme**
+- `themeGenerator.generateTheme` **Generate a theme** (main command)
 
 Extension switches active color theme to `generated-dark` and writes colors into `settings.json` **workbench.colorCustomizations** and **editor.tokenColorCustomizations** to live preview the theme.
 <!--
