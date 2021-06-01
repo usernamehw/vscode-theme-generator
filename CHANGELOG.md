@@ -1,3 +1,10 @@
+## 0.0.8 `01 Jun 2021`
+
+- ✨ Reference main colors (`bg`, `fg`, `c1-7`) (not very useful as of now, there's only 1 input (focus color))
+- ✨ More effort into restoring webview state
+- ✨ Shuffle checkbox persists resets
+- 🐛 Lock for inputs with the same color doesn't work
+
 ## 0.0.7 `19 Dec 2020`
 
 - ✨ Create lock icon that prevens shuffling of a chosen color
